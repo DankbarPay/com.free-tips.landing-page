@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="de" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stimmtso - Digital Tips Made Simple</title>
+    <title>Stimmtso - Digitale Trinkgelder Ohne Kleingeld</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/tip-jar.png">
     <style>
-        /* CSS стили интегрированы для единого файла */
         :root {
             --primary: #4F46E5;
             --primary-dark: #4338CA;
@@ -49,7 +48,7 @@
             padding: 0 20px;
         }
 
-        /* Header & Navigation */
+        /* Header */
         header {
             padding: 20px 0;
             position: fixed;
@@ -94,26 +93,10 @@
             color: var(--dark);
             font-weight: 500;
             transition: var(--transition);
-            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--primary);
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
         }
 
         .language-switcher {
@@ -169,7 +152,7 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             padding: 160px 0 100px;
             background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
@@ -227,6 +210,8 @@
             position: relative;
             display: flex;
             justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
         .qr-visual {
@@ -239,6 +224,12 @@
             animation: float 6s ease-in-out infinite;
             position: relative;
             z-index: 2;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .qr-visual:hover {
+            transform: scale(1.05);
         }
 
         .qr-code {
@@ -247,32 +238,19 @@
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             border-radius: 10px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
+            text-align: center;
+            padding: 20px;
         }
 
-        .floating-element {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--accent);
-            top: 20px;
-            right: 0;
-            animation: float 4s ease-in-out infinite;
-            animation-delay: 1s;
-        }
-
-        .floating-element:nth-child(2) {
-            background: var(--secondary);
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            left: 0;
-            animation-delay: 2s;
+        .qr-code i {
+            font-size: 4rem;
+            margin-bottom: 15px;
         }
 
         @keyframes float {
@@ -280,7 +258,7 @@
             50% { transform: translateY(-20px); }
         }
 
-        /* Features Section */
+        /* Features */
         .section {
             padding: 100px 0;
         }
@@ -397,8 +375,20 @@
 
         .industries-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 25px;
+        }
+
+        @media (max-width: 1100px) {
+            .industries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .industries-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .industry-card {
@@ -504,6 +494,133 @@
             background-color: var(--light);
         }
 
+        /* Form Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            animation: modalAppear 0.3s ease;
+        }
+
+        @keyframes modalAppear {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .modal p {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #E5E7EB;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .required {
+            color: #EF4444;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .thank-you-message i {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .thank-you-message h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
         /* Footer */
         footer {
             background-color: var(--dark);
@@ -566,23 +683,26 @@
             .section-title {
                 font-size: 2.2rem;
             }
-        }
-
-        @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
             .mobile-menu-btn {
                 display: block;
             }
+            .step:not(:last-child):after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.3rem;
             }
             .features-grid {
                 grid-template-columns: 1fr;
             }
-            .step:not(:last-child):after {
-                display: none;
+            .modal {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -597,17 +717,17 @@
             </a>
             
             <nav class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it works</a>
-                <a href="#industries">Industries</a>
-                <a href="#testimonials">Testimonials</a>
+                <a href="#features">Funktionen</a>
+                <a href="#how-it-works">So funktioniert's</a>
+                <a href="#industries">Branchen</a>
+                <a href="#testimonials">Kundenstimmen</a>
                 
                 <div class="language-switcher">
-                    <button class="lang-btn active" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="de">DE</button>
+                    <button class="lang-btn active" data-lang="de">DE</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
                 </div>
                 
-                <a href="#contact" class="cta-button">Get Started</a>
+                <a href="#" class="cta-button open-form">Kostenlos starten</a>
             </nav>
             
             <button class="mobile-menu-btn">
@@ -620,21 +740,20 @@
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Digital Tips <span>Without The Change</span></h1>
-                <p>Stimmtso enables restaurants, cafes, barbers, car washes and service businesses to accept digital tips easily. No cash needed, just scan and tip.</p>
+                <h1>Digitale Trinkgelder <span>Ohne Kleingeld</span></h1>
+                <p>Stimmtso ermöglicht Restaurants, Cafés, Friseuren, Autowaschanlagen und Dienstleistungsunternehmen, digitale Trinkgelder einfach anzunehmen. Kein Bargeld nötig, einfach scannen und Trinkgeld geben.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="cta-button">Start Free Trial</a>
-                    <a href="#how-it-works" class="cta-button secondary-button">See How It Works</a>
+                    <a href="#" class="cta-button open-form">Kostenlos testen</a>
+                    <a href="#how-it-works" class="cta-button secondary-button">So funktioniert's</a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="qr-visual">
+                <div class="qr-visual open-form">
                     <div class="qr-code">
-                        Scan to Tip
+                        <i class="fas fa-qrcode"></i>
+                        Zum Kontaktformular
                     </div>
                 </div>
-                <div class="floating-element"></div>
-                <div class="floating-element"></div>
             </div>
         </div>
     </section>
@@ -642,49 +761,49 @@
     <!-- Features Section -->
     <section id="features" class="section">
         <div class="container">
-            <h2 class="section-title">Why Choose <span>Stimmtso</span></h2>
+            <h2 class="section-title">Warum <span>Stimmtso</span> wählen</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-qrcode"></i>
                     </div>
-                    <h3>Simple QR Codes</h3>
-                    <p>Generate unique QR codes for each employee or team. Guests simply scan to tip - no app download required.</p>
+                    <h3>Einfache QR-Codes</h3>
+                    <p>Erstellen Sie individuelle QR-Codes für jeden Mitarbeiter oder jedes Team. Gäste scannen einfach – kein App-Download erforderlich.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-euro-sign"></i>
                     </div>
-                    <h3>Higher Tips</h3>
-                    <p>Increase tip amounts by 15-30% by making tipping convenient and accessible for card-only customers.</p>
+                    <h3>Höhere Trinkgelder</h3>
+                    <p>Erhöhen Sie die Trinkgeldbeträge um 15-30 %, indem Sie das Trinkgeldgeben für kartenzahlende Kunden bequem und zugänglich machen.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Real-time Analytics</h3>
-                    <p>Track tips, performance, and guest satisfaction through our comprehensive dashboard with export capabilities.</p>
+                    <h3>Echtzeit-Analytik</h3>
+                    <p>Verfolgen Sie Trinkgelder, Leistung und Gästezufriedenheit über unser umfassendes Dashboard mit Exportfunktionen.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3>Team Management</h3>
-                    <p>Easily distribute tips among teams with customizable allocation rules. Strengthen team spirit with transparency.</p>
+                    <h3>Team-Management</h3>
+                    <p>Verteilen Sie Trinkgelder einfach unter Teams mit anpassbaren Verteilungsregeln. Stärken Sie den Teamgeist durch Transparenz.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>100% Compliant</h3>
-                    <p>Fully compliant with German tax regulations and tipping laws. Automated reporting simplifies accounting.</p>
+                    <h3>100% Konform</h3>
+                    <p>Vollständig konform mit deutschen Steuervorschriften und Trinkgeldgesetzen. Automatisierte Berichte vereinfachen die Buchhaltung.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <h3>Fast Integration</h3>
-                    <p>Connect with your existing POS systems or use standalone. Get started in less than 10 minutes.</p>
+                    <h3>Schnelle Integration</h3>
+                    <p>Verbinden Sie sich mit Ihren bestehenden Kassensystemen oder nutzen Sie die Standalone-Lösung. In weniger als 10 Minuten startklar.</p>
                 </div>
             </div>
         </div>
@@ -693,27 +812,27 @@
     <!-- How It Works -->
     <section id="how-it-works" class="section" style="background-color: #F9FAFB;">
         <div class="container">
-            <h2 class="section-title">How It <span>Works</span></h2>
+            <h2 class="section-title">So <span>funktioniert es</span></h2>
             <div class="steps-container">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Sign Up Free</h3>
-                    <p>Create your business account in minutes. No setup fees or monthly charges. Only pay per transaction.</p>
+                    <h3>Kostenlos anmelden</h3>
+                    <p>Erstellen Sie in wenigen Minuten Ihr Geschäftskonto. Keine Einrichtungsgebühren oder monatlichen Kosten. Nur Bezahlung pro Transaktion.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Get Your QR Codes</h3>
-                    <p>Generate personalized QR codes for your staff or teams. Print them, display digitally, or embed in receipts.</p>
+                    <h3>QR-Codes erhalten</h3>
+                    <p>Generieren Sie personalisierte QR-Codes für Ihre Mitarbeiter oder Teams. Drucken Sie sie aus, zeigen Sie sie digital an oder integrieren Sie sie in Rechnungen.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Start Receiving Tips</h3>
-                    <p>Guests scan the code with any smartphone camera and tip using their preferred payment method.</p>
+                    <h3>Trinkgelder erhalten</h3>
+                    <p>Gäste scannen den Code mit jeder Smartphone-Kamera und geben Trinkgeld mit ihrer bevorzugten Zahlungsmethode.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
-                    <h3>Automatic Payouts</h3>
-                    <p>Tips go directly to employees' bank accounts. Flexible distribution rules and real-time tracking.</p>
+                    <h3>Automatische Auszahlungen</h3>
+                    <p>Trinkgelder gehen direkt auf die Bankkonten der Mitarbeiter. Flexible Verteilungsregeln und Echtzeit-Verfolgung.</p>
                 </div>
             </div>
         </div>
@@ -722,49 +841,64 @@
     <!-- Industries -->
     <section id="industries" class="section industries">
         <div class="container">
-            <h2 class="section-title">Perfect For <span>Your Business</span></h2>
+            <h2 class="section-title">Perfekt für <span>Ihr Unternehmen</span></h2>
             <div class="industries-grid">
                 <div class="industry-card">
                     <div class="industry-icon">
                         <i class="fas fa-utensils"></i>
                     </div>
-                    <h3>Restaurants & Cafes</h3>
-                    <p>Waitstaff, bartenders, and hosts receive tips directly.</p>
+                    <h3>Restaurants & Cafés</h3>
+                    <p>Servicekräfte, Barkeeper und Empfangsmitarbeiter erhalten Trinkgelder direkt.</p>
                 </div>
                 <div class="industry-card">
                     <div class="industry-icon">
                         <i class="fas fa-cut"></i>
                     </div>
-                    <h3>Barbers & Salons</h3>
-                    <p>Hairdressers, stylists, and beauticians get digital tips.</p>
+                    <h3>Friseure & Salons</h3>
+                    <p>Friseure, Stylisten und Kosmetikerinnen erhalten digitale Trinkgelder.</p>
                 </div>
                 <div class="industry-card">
                     <div class="industry-icon">
                         <i class="fas fa-car"></i>
                     </div>
-                    <h3>Car Washes</h3>
-                    <p>Attendants receive appreciation for great service.</p>
+                    <h3>Autowaschanlagen</h3>
+                    <p>Mitarbeiter erhalten Wertschätzung für hervorragenden Service.</p>
                 </div>
                 <div class="industry-card">
                     <div class="industry-icon">
                         <i class="fas fa-hotel"></i>
                     </div>
                     <h3>Hotels</h3>
-                    <p>Porters, housekeeping, and concierge staff benefit.</p>
+                    <p>Porter, Hauspersonal und Concierge-Mitarbeiter profitieren.</p>
                 </div>
                 <div class="industry-card">
                     <div class="industry-icon">
                         <i class="fas fa-truck"></i>
                     </div>
-                    <h3>Delivery Services</h3>
-                    <p>Drivers get tips added directly to their earnings.</p>
+                    <h3>Lieferdienste</h3>
+                    <p>Fahrer erhalten Trinkgelder direkt zu ihrem Verdienst hinzugefügt.</p>
                 </div>
                 <div class="industry-card">
                     <div class="industry-icon">
                         <i class="fas fa-spa"></i>
                     </div>
                     <h3>Wellness & Fitness</h3>
-                    <p>Trainers, therapists, and instructors receive digital tips.</p>
+                    <p>Trainer, Therapeuten und Instruktoren erhalten digitale Trinkgelder.</p>
+                </div>
+                <!-- Neue Karten -->
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-taxi"></i>
+                    </div>
+                    <h3>Taxi-Dienste</h3>
+                    <p>Taxifahrer erhalten Trinkgelder bequem per digitaler Zahlung.</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3>Event-Services</h3>
+                    <p>Catering- und Event-Mitarbeiter sammeln Trinkgelder einfach ein.</p>
                 </div>
             </div>
         </div>
@@ -773,41 +907,41 @@
     <!-- Testimonials -->
     <section id="testimonials" class="section">
         <div class="container">
-            <h2 class="section-title">What Our <span>Clients Say</span></h2>
+            <h2 class="section-title">Was unsere <span>Kunden sagen</span></h2>
             <div class="testimonials-container">
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        Since implementing Stimmtso, our staff tips have increased by 22%. The system is incredibly easy for both our team and guests.
+                        Seit der Einführung von Stimmtso haben sich die Trinkgelder unseres Personals um 22 % erhöht. Das System ist für unser Team und die Gäste unglaublich einfach.
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">MS</div>
                         <div>
                             <h4>Maria Schmidt</h4>
-                            <p>Restaurant Owner, Berlin</p>
+                            <p>Restaurantbesitzerin, Berlin</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        As a barber, I used to miss out on tips when clients only had cards. Now I receive tips daily through Stimmtso - it's changed my earnings significantly.
+                        Als Friseur habe ich früher Trinkgelder verpasst, wenn Kunden nur Karten dabeihatten. Jetzt erhalte ich täglich Trinkgelder über Stimmtso - das hat mein Einkommen erheblich verändert.
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">TJ</div>
                         <div>
                             <h4>Thomas Jäger</h4>
-                            <p>Barbershop, Hamburg</p>
+                            <p>Friseursalon, Hamburg</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        The team distribution feature has eliminated all disputes about tip sharing. Our employees love the transparency and instant payouts.
+                        Die Team-Verteilungsfunktion hat alle Streitigkeiten über die Trinkgeldaufteilung beseitigt. Unsere Mitarbeiter lieben die Transparenz und sofortigen Auszahlungen.
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">AK</div>
                         <div>
                             <h4>Anna Keller</h4>
-                            <p>Cafe Manager, Munich</p>
+                            <p>Café-Managerin, München</p>
                         </div>
                     </div>
                 </div>
@@ -818,10 +952,10 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to Increase Your Tips?</h2>
-            <p>Join hundreds of service businesses across Germany already using Stimmtso to simplify digital tipping and boost employee earnings.</p>
-            <a href="#contact" class="cta-button">Start Your Free Trial Now</a>
-            <p style="margin-top: 20px; font-size: 0.9rem;">No credit card required • Free setup support • Cancel anytime</p>
+            <h2>Bereit, Ihre Trinkgelder zu erhöhen?</h2>
+            <p>Schließen Sie sich Hunderten von Dienstleistungsunternehmen in Deutschland an, die bereits Stimmtso nutzen, um digitale Trinkgelder zu vereinfachen und das Einkommen der Mitarbeiter zu steigern.</p>
+            <a href="#" class="cta-button open-form">Jetzt kostenlos testen</a>
+            <p style="margin-top: 20px; font-size: 0.9rem;">Keine Kreditkarte erforderlich • Kostenlose Einrichtungsunterstützung • Jederzeit kündbar</p>
         </div>
     </section>
 
@@ -831,55 +965,100 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Stimmtso</h3>
-                    <p>Digital tipping solutions for Germany's service industry. Making tipping easy, transparent, and profitable for everyone.</p>
+                    <p>Digitale Trinkgeldlösungen für Deutschlands Dienstleistungsbranche. Machen Sie das Trinkgeldgeben einfach, transparent und profitabel für alle.</p>
                 </div>
                 <div class="footer-column">
-                    <h3>Product</h3>
+                    <h3>Produkt</h3>
                     <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#industries">Industries</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#features">Funktionen</a></li>
+                        <li><a href="#how-it-works">So funktioniert's</a></li>
+                        <li><a href="#industries">Branchen</a></li>
+                        <li><a href="#pricing">Preise</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Company</h3>
+                    <h3>Unternehmen</h3>
                     <ul>
-                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#about">Über uns</a></li>
                         <li><a href="#blog">Blog</a></li>
-                        <li><a href="#careers">Careers</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#careers">Karriere</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Legal</h3>
+                    <h3>Rechtliches</h3>
                     <ul>
-                        <li><a href="#privacy">Privacy Policy</a></li>
-                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#privacy">Datenschutz</a></li>
+                        <li><a href="#terms">Nutzungsbedingungen</a></li>
                         <li><a href="#compliance">Compliance</a></li>
-                        <li><a href="#gdpr">GDPR</a></li>
+                        <li><a href="#gdpr">DSGVO</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Contact</h3>
+                    <h3>Kontakt</h3>
                     <ul>
                         <li><i class="fas fa-envelope"></i> hello@stimmtso.de</li>
                         <li><i class="fas fa-phone"></i> +49 30 12345678</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Berlin, Germany</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Berlin, Deutschland</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2026 Stimmtso GmbH. All rights reserved. "Stimmtso" means "Without Change" - making digital tipping simple.</p>
-                <p>This website is for demonstration purposes for Adyen integration.</p>
+                <p>&copy; <span id="currentYear"></span> Stimmtso GmbH. Alle Rechte vorbehalten. "Stimmtso" bedeutet "Ohne Kleingeld" - digitale Trinkgelder einfach gemacht.</p>
+                <p>Diese Website dient Demonstrationszwecken für die Adyen-Integration.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Contact Form Modal -->
+    <div class="modal-overlay" id="contactFormModal">
+        <div class="modal">
+            <button class="close-modal">&times;</button>
+            
+            <div id="formContent">
+                <h2>Kostenlose Testversion starten</h2>
+                <p>Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen, um Ihre kostenlose Testversion einzurichten.</p>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="Ihr Vor- und Nachname">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefonnummer <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+49 123 456789">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Unternehmen <span class="required">*</span></label>
+                        <input type="text" id="company" name="company" required placeholder="Name Ihres Unternehmens">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-Mail (optional)</label>
+                        <input type="email" id="email" name="email" placeholder="ihre.email@beispiel.de">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Jetzt kostenlos testen</button>
+                </form>
+            </div>
+            
+            <div class="thank-you-message" id="thankYouMessage">
+                <i class="fas fa-check-circle"></i>
+                <h2>Vielen Dank!</h2>
+                <p>Ihre Anfrage wurde erfolgreich übermittelt. Wir werden uns innerhalb von 24 Stunden bei Ihnen melden, um Ihre kostenlose Testversion von Stimmtso einzurichten.</p>
+                <button class="cta-button close-modal" style="margin-top: 20px;">Schließen</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // JavaScript для интерактивности и мультиязычности
         document.addEventListener('DOMContentLoaded', function() {
-            // Мобильное меню
+            // 1. Установить немецкий язык по умолчанию
+            document.documentElement.lang = 'de';
+            
+            // 2. Мобильное меню
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
             
@@ -897,33 +1076,335 @@
                 }
             });
             
-            // Переключение языка
-            const langButtons = document.querySelectorAll('.lang-btn');
+            // 3. Полные переводы
             const translations = {
-                en: {
-                    heroTitle: 'Digital Tips <span>Without The Change</span>',
-                    heroText: 'Stimmtso enables restaurants, cafes, barbers, car washes and service businesses to accept digital tips easily. No cash needed, just scan and tip.',
-                    ctaButton: 'Start Free Trial',
-                    featuresTitle: 'Why Choose <span>Stimmtso</span>',
-                    howItWorksTitle: 'How It <span>Works</span>',
-                    industriesTitle: 'Perfect For <span>Your Business</span>',
-                    testimonialsTitle: 'What Our <span>Clients Say</span>',
-                    ctaTitle: 'Ready to Increase Your Tips?',
-                    ctaText: 'Join hundreds of service businesses across Germany already using Stimmtso to simplify digital tipping and boost employee earnings.'
-                },
                 de: {
+                    // Навигация
+                    navFeatures: 'Funktionen',
+                    navHowItWorks: 'So funktioniert\'s',
+                    navIndustries: 'Branchen',
+                    navTestimonials: 'Kundenstimmen',
+                    navCTA: 'Kostenlos starten',
+                    
+                    // Герой
                     heroTitle: 'Digitale Trinkgelder <span>Ohne Kleingeld</span>',
                     heroText: 'Stimmtso ermöglicht Restaurants, Cafés, Friseuren, Autowaschanlagen und Dienstleistungsunternehmen, digitale Trinkgelder einfach anzunehmen. Kein Bargeld nötig, einfach scannen und Trinkgeld geben.',
-                    ctaButton: 'Kostenlos testen',
+                    heroCTA: 'Kostenlos testen',
+                    heroSecondary: 'So funktioniert\'s',
+                    qrText: 'Zum Kontaktformular',
+                    
+                    // Особенности
                     featuresTitle: 'Warum <span>Stimmtso</span> wählen',
+                    feature1Title: 'Einfache QR-Codes',
+                    feature1Text: 'Erstellen Sie individuelle QR-Codes für jeden Mitarbeiter oder jedes Team. Gäste scannen einfach – kein App-Download erforderlich.',
+                    feature2Title: 'Höhere Trinkgelder',
+                    feature2Text: 'Erhöhen Sie die Trinkgeldbeträge um 15-30 %, indem Sie das Trinkgeldgeben für kartenzahlende Kunden bequem und zugänglich machen.',
+                    feature3Title: 'Echtzeit-Analytik',
+                    feature3Text: 'Verfolgen Sie Trinkgelder, Leistung und Gästezufriedenheit über unser umfassendes Dashboard mit Exportfunktionen.',
+                    feature4Title: 'Team-Management',
+                    feature4Text: 'Verteilen Sie Trinkgelder einfach unter Teams mit anpassbaren Verteilungsregeln. Stärken Sie den Teamgeist durch Transparenz.',
+                    feature5Title: '100% Konform',
+                    feature5Text: 'Vollständig konform mit deutschen Steuervorschriften und Trinkgeldgesetzen. Automatisierte Berichte vereinfachen die Buchhaltung.',
+                    feature6Title: 'Schnelle Integration',
+                    feature6Text: 'Verbinden Sie sich mit Ihren bestehenden Kassensystemen oder nutzen Sie die Standalone-Lösung. In weniger als 10 Minuten startklar.',
+                    
+                    // Как это работает
                     howItWorksTitle: 'So <span>funktioniert es</span>',
+                    step1Title: 'Kostenlos anmelden',
+                    step1Text: 'Erstellen Sie in wenigen Minuten Ihr Geschäftskonto. Keine Einrichtungsgebühren oder monatlichen Kosten. Nur Bezahlung pro Transaktion.',
+                    step2Title: 'QR-Codes erhalten',
+                    step2Text: 'Generieren Sie personalisierte QR-Codes für Ihre Mitarbeiter oder Teams. Drucken Sie sie aus, zeigen Sie sie digital an oder integrieren Sie sie in Rechnungen.',
+                    step3Title: 'Trinkgelder erhalten',
+                    step3Text: 'Gäste scannen den Code mit jeder Smartphone-Kamera und geben Trinkgeld mit ihrer bevorzugten Zahlungsmethode.',
+                    step4Title: 'Automatische Auszahlungen',
+                    step4Text: 'Trinkgelder gehen direkt auf die Bankkonten der Mitarbeiter. Flexible Verteilungsregeln und Echtzeit-Verfolgung.',
+                    
+                    // Отрасли
                     industriesTitle: 'Perfekt für <span>Ihr Unternehmen</span>',
+                    industry1Title: 'Restaurants & Cafés',
+                    industry1Text: 'Servicekräfte, Barkeeper und Empfangsmitarbeiter erhalten Trinkgelder direkt.',
+                    industry2Title: 'Friseure & Salons',
+                    industry2Text: 'Friseure, Stylisten und Kosmetikerinnen erhalten digitale Trinkgelder.',
+                    industry3Title: 'Autowaschanlagen',
+                    industry3Text: 'Mitarbeiter erhalten Wertschätzung für hervorragenden Service.',
+                    industry4Title: 'Hotels',
+                    industry4Text: 'Porter, Hauspersonal und Concierge-Mitarbeiter profitieren.',
+                    industry5Title: 'Lieferdienste',
+                    industry5Text: 'Fahrer erhalten Trinkgelder direkt zu ihrem Verdienst hinzugefügt.',
+                    industry6Title: 'Wellness & Fitness',
+                    industry6Text: 'Trainer, Therapeuten und Instruktoren erhalten digitale Trinkgelder.',
+                    industry7Title: 'Taxi-Dienste',
+                    industry7Text: 'Taxifahrer erhalten Trinkgelder bequem per digitaler Zahlung.',
+                    industry8Title: 'Event-Services',
+                    industry8Text: 'Catering- und Event-Mitarbeiter sammeln Trinkgelder einfach ein.',
+                    
+                    // Отзывы
                     testimonialsTitle: 'Was unsere <span>Kunden sagen</span>',
+                    testimonial1Text: 'Seit der Einführung von Stimmtso haben sich die Trinkgelder unseres Personals um 22 % erhöht. Das System ist für unser Team und die Gäste unglaublich einfach.',
+                    testimonial1Name: 'Maria Schmidt',
+                    testimonial1Role: 'Restaurantbesitzerin, Berlin',
+                    testimonial2Text: 'Als Friseur habe ich früher Trinkgelder verpasst, wenn Kunden nur Karten dabeihatten. Jetzt erhalte ich täglich Trinkgelder über Stimmtso - das hat mein Einkommen erheblich verändert.',
+                    testimonial2Name: 'Thomas Jäger',
+                    testimonial2Role: 'Friseursalon, Hamburg',
+                    testimonial3Text: 'Die Team-Verteilungsfunktion hat alle Streitigkeiten über die Trinkgeldaufteilung beseitigt. Unsere Mitarbeiter lieben die Transparenz und sofortigen Auszahlungen.',
+                    testimonial3Name: 'Anna Keller',
+                    testimonial3Role: 'Café-Managerin, München',
+                    
+                    // CTA
                     ctaTitle: 'Bereit, Ihre Trinkgelder zu erhöhen?',
-                    ctaText: 'Schließen Sie sich Hunderten von Dienstleistungsunternehmen in Deutschland an, die bereits Stimmtso nutzen, um digitale Trinkgelder zu vereinfachen und das Einkommen der Mitarbeiter zu steigern.'
+                    ctaText: 'Schließen Sie sich Hunderten von Dienstleistungsunternehmen in Deutschland an, die bereits Stimmtso nutzen, um digitale Trinkgelder zu vereinfachen und das Einkommen der Mitarbeiter zu steigern.',
+                    ctaButton: 'Jetzt kostenlos testen',
+                    ctaSubtext: 'Keine Kreditkarte erforderlich • Kostenlose Einrichtungsunterstützung • Jederzeit kündbar',
+                    
+                    // Футер
+                    footerAbout: 'Digitale Trinkgeldlösungen für Deutschlands Dienstleistungsbranche. Machen Sie das Trinkgeldgeben einfach, transparent und profitabel für alle.',
+                    footerProduct: 'Produkt',
+                    footerCompany: 'Unternehmen',
+                    footerLegal: 'Rechtliches',
+                    footerContact: 'Kontakt',
+                    
+                    // Форма
+                    formTitle: 'Kostenlose Testversion starten',
+                    formDescription: 'Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen, um Ihre kostenlose Testversion einzurichten.',
+                    nameLabel: 'Name *',
+                    namePlaceholder: 'Ihr Vor- und Nachname',
+                    phoneLabel: 'Telefonnummer *',
+                    phonePlaceholder: '+49 123 456789',
+                    companyLabel: 'Unternehmen *',
+                    companyPlaceholder: 'Name Ihres Unternehmens',
+                    emailLabel: 'E-Mail (optional)',
+                    emailPlaceholder: 'ihre.email@beispiel.de',
+                    submitButton: 'Jetzt kostenlos testen',
+                    
+                    // Благодарность
+                    thankYouTitle: 'Vielen Dank!',
+                    thankYouText: 'Ihre Anfrage wurde erfolgreich übermittelt. Wir werden uns innerhalb von 24 Stunden bei Ihnen melden, um Ihre kostenlose Testversion von Stimmtso einzurichten.',
+                    closeButton: 'Schließen'
+                },
+                en: {
+                    // Navigation
+                    navFeatures: 'Features',
+                    navHowItWorks: 'How it works',
+                    navIndustries: 'Industries',
+                    navTestimonials: 'Testimonials',
+                    navCTA: 'Get Started',
+                    
+                    // Hero
+                    heroTitle: 'Digital Tips <span>Without The Change</span>',
+                    heroText: 'Stimmtso enables restaurants, cafes, barbers, car washes and service businesses to accept digital tips easily. No cash needed, just scan and tip.',
+                    heroCTA: 'Start Free Trial',
+                    heroSecondary: 'See How It Works',
+                    qrText: 'To Contact Form',
+                    
+                    // Features
+                    featuresTitle: 'Why Choose <span>Stimmtso</span>',
+                    feature1Title: 'Simple QR Codes',
+                    feature1Text: 'Generate unique QR codes for each employee or team. Guests simply scan to tip - no app download required.',
+                    feature2Title: 'Higher Tips',
+                    feature2Text: 'Increase tip amounts by 15-30% by making tipping convenient and accessible for card-only customers.',
+                    feature3Title: 'Real-time Analytics',
+                    feature3Text: 'Track tips, performance, and guest satisfaction through our comprehensive dashboard with export capabilities.',
+                    feature4Title: 'Team Management',
+                    feature4Text: 'Easily distribute tips among teams with customizable allocation rules. Strengthen team spirit with transparency.',
+                    feature5Title: '100% Compliant',
+                    feature5Text: 'Fully compliant with German tax regulations and tipping laws. Automated reporting simplifies accounting.',
+                    feature6Title: 'Fast Integration',
+                    feature6Text: 'Connect with your existing POS systems or use standalone. Get started in less than 10 minutes.',
+                    
+                    // How It Works
+                    howItWorksTitle: 'How It <span>Works</span>',
+                    step1Title: 'Sign Up Free',
+                    step1Text: 'Create your business account in minutes. No setup fees or monthly charges. Only pay per transaction.',
+                    step2Title: 'Get Your QR Codes',
+                    step2Text: 'Generate personalized QR codes for your staff or teams. Print them, display digitally, or embed in receipts.',
+                    step3Title: 'Start Receiving Tips',
+                    step3Text: 'Guests scan the code with any smartphone camera and tip using their preferred payment method.',
+                    step4Title: 'Automatic Payouts',
+                    step4Text: 'Tips go directly to employees\' bank accounts. Flexible distribution rules and real-time tracking.',
+                    
+                    // Industries
+                    industriesTitle: 'Perfect For <span>Your Business</span>',
+                    industry1Title: 'Restaurants & Cafes',
+                    industry1Text: 'Waitstaff, bartenders, and hosts receive tips directly.',
+                    industry2Title: 'Barbers & Salons',
+                    industry2Text: 'Hairdressers, stylists, and beauticians get digital tips.',
+                    industry3Title: 'Car Washes',
+                    industry3Text: 'Attendants receive appreciation for great service.',
+                    industry4Title: 'Hotels',
+                    industry4Text: 'Porters, housekeeping, and concierge staff benefit.',
+                    industry5Title: 'Delivery Services',
+                    industry5Text: 'Drivers get tips added directly to their earnings.',
+                    industry6Title: 'Wellness & Fitness',
+                    industry6Text: 'Trainers, therapists, and instructors receive digital tips.',
+                    industry7Title: 'Taxi Services',
+                    industry7Text: 'Taxi drivers receive tips conveniently via digital payment.',
+                    industry8Title: 'Event Services',
+                    industry8Text: 'Catering and event staff easily collect tips.',
+                    
+                    // Testimonials
+                    testimonialsTitle: 'What Our <span>Clients Say</span>',
+                    testimonial1Text: 'Since implementing Stimmtso, our staff tips have increased by 22%. The system is incredibly easy for both our team and guests.',
+                    testimonial1Name: 'Maria Schmidt',
+                    testimonial1Role: 'Restaurant Owner, Berlin',
+                    testimonial2Text: 'As a barber, I used to miss out on tips when clients only had cards. Now I receive tips daily through Stimmtso - it\'s changed my earnings significantly.',
+                    testimonial2Name: 'Thomas Jäger',
+                    testimonial2Role: 'Barbershop, Hamburg',
+                    testimonial3Text: 'The team distribution feature has eliminated all disputes about tip sharing. Our employees love the transparency and instant payouts.',
+                    testimonial3Name: 'Anna Keller',
+                    testimonial3Role: 'Cafe Manager, Munich',
+                    
+                    // CTA
+                    ctaTitle: 'Ready to Increase Your Tips?',
+                    ctaText: 'Join hundreds of service businesses across Germany already using Stimmtso to simplify digital tipping and boost employee earnings.',
+                    ctaButton: 'Start Your Free Trial Now',
+                    ctaSubtext: 'No credit card required • Free setup support • Cancel anytime',
+                    
+                    // Footer
+                    footerAbout: 'Digital tipping solutions for Germany\'s service industry. Making tipping easy, transparent, and profitable for everyone.',
+                    footerProduct: 'Product',
+                    footerCompany: 'Company',
+                    footerLegal: 'Legal',
+                    footerContact: 'Contact',
+                    
+                    // Form
+                    formTitle: 'Start Free Trial',
+                    formDescription: 'Fill out the form and we\'ll contact you within 24 hours to set up your free trial.',
+                    nameLabel: 'Name *',
+                    namePlaceholder: 'Your first and last name',
+                    phoneLabel: 'Phone Number *',
+                    phonePlaceholder: '+49 123 456789',
+                    companyLabel: 'Company *',
+                    companyPlaceholder: 'Your company name',
+                    emailLabel: 'Email (optional)',
+                    emailPlaceholder: 'your.email@example.com',
+                    submitButton: 'Start Free Trial Now',
+                    
+                    // Thank You
+                    thankYouTitle: 'Thank You!',
+                    thankYouText: 'Your request has been successfully submitted. We will contact you within 24 hours to set up your free trial of Stimmtso.',
+                    closeButton: 'Close'
                 }
             };
             
+            // 4. Функция применения переводов
+            function applyTranslation(lang) {
+                const t = translations[lang];
+                
+                // Навигация
+                document.querySelectorAll('.nav-links a')[0].textContent = t.navFeatures;
+                document.querySelectorAll('.nav-links a')[1].textContent = t.navHowItWorks;
+                document.querySelectorAll('.nav-links a')[2].textContent = t.navIndustries;
+                document.querySelectorAll('.nav-links a')[3].textContent = t.navTestimonials;
+                document.querySelector('.nav-links .cta-button').textContent = t.navCTA;
+                
+                // Герой
+                document.querySelector('.hero h1').innerHTML = t.heroTitle;
+                document.querySelector('.hero p').textContent = t.heroText;
+                document.querySelector('.hero-buttons .cta-button').textContent = t.heroCTA;
+                document.querySelector('.hero-buttons .secondary-button').textContent = t.heroSecondary;
+                document.querySelector('.qr-code').innerHTML = `<i class="fas fa-qrcode"></i>${t.qrText}`;
+                
+                // Особенности
+                document.querySelector('#features .section-title').innerHTML = t.featuresTitle;
+                const features = document.querySelectorAll('.feature-card');
+                features[0].querySelector('h3').textContent = t.feature1Title;
+                features[0].querySelector('p').textContent = t.feature1Text;
+                features[1].querySelector('h3').textContent = t.feature2Title;
+                features[1].querySelector('p').textContent = t.feature2Text;
+                features[2].querySelector('h3').textContent = t.feature3Title;
+                features[2].querySelector('p').textContent = t.feature3Text;
+                features[3].querySelector('h3').textContent = t.feature4Title;
+                features[3].querySelector('p').textContent = t.feature4Text;
+                features[4].querySelector('h3').textContent = t.feature5Title;
+                features[4].querySelector('p').textContent = t.feature5Text;
+                features[5].querySelector('h3').textContent = t.feature6Title;
+                features[5].querySelector('p').textContent = t.feature6Text;
+                
+                // Как это работает
+                document.querySelector('#how-it-works .section-title').innerHTML = t.howItWorksTitle;
+                const steps = document.querySelectorAll('.step');
+                steps[0].querySelector('h3').textContent = t.step1Title;
+                steps[0].querySelector('p').textContent = t.step1Text;
+                steps[1].querySelector('h3').textContent = t.step2Title;
+                steps[1].querySelector('p').textContent = t.step2Text;
+                steps[2].querySelector('h3').textContent = t.step3Title;
+                steps[2].querySelector('p').textContent = t.step3Text;
+                steps[3].querySelector('h3').textContent = t.step4Title;
+                steps[3].querySelector('p').textContent = t.step4Text;
+                
+                // Отрасли
+                document.querySelector('#industries .section-title').innerHTML = t.industriesTitle;
+                const industries = document.querySelectorAll('.industry-card');
+                industries[0].querySelector('h3').textContent = t.industry1Title;
+                industries[0].querySelector('p').textContent = t.industry1Text;
+                industries[1].querySelector('h3').textContent = t.industry2Title;
+                industries[1].querySelector('p').textContent = t.industry2Text;
+                industries[2].querySelector('h3').textContent = t.industry3Title;
+                industries[2].querySelector('p').textContent = t.industry3Text;
+                industries[3].querySelector('h3').textContent = t.industry4Title;
+                industries[3].querySelector('p').textContent = t.industry4Text;
+                industries[4].querySelector('h3').textContent = t.industry5Title;
+                industries[4].querySelector('p').textContent = t.industry5Text;
+                industries[5].querySelector('h3').textContent = t.industry6Title;
+                industries[5].querySelector('p').textContent = t.industry6Text;
+                industries[6].querySelector('h3').textContent = t.industry7Title;
+                industries[6].querySelector('p').textContent = t.industry7Text;
+                industries[7].querySelector('h3').textContent = t.industry8Title;
+                industries[7].querySelector('p').textContent = t.industry8Text;
+                
+                // Отзывы
+                document.querySelector('#testimonials .section-title').innerHTML = t.testimonialsTitle;
+                const testimonials = document.querySelectorAll('.testimonial-card');
+                testimonials[0].querySelector('.testimonial-text').textContent = t.testimonial1Text;
+                testimonials[0].querySelector('h4').textContent = t.testimonial1Name;
+                testimonials[0].querySelector('p').textContent = t.testimonial1Role;
+                testimonials[1].querySelector('.testimonial-text').textContent = t.testimonial2Text;
+                testimonials[1].querySelector('h4').textContent = t.testimonial2Name;
+                testimonials[1].querySelector('p').textContent = t.testimonial2Role;
+                testimonials[2].querySelector('.testimonial-text').textContent = t.testimonial3Text;
+                testimonials[2].querySelector('h4').textContent = t.testimonial3Name;
+                testimonials[2].querySelector('p').textContent = t.testimonial3Role;
+                
+                // CTA
+                document.querySelector('.cta-section h2').textContent = t.ctaTitle;
+                document.querySelector('.cta-section p').textContent = t.ctaText;
+                document.querySelector('.cta-section .cta-button').textContent = t.ctaButton;
+                document.querySelector('.cta-section p:nth-child(4)').textContent = t.ctaSubtext;
+                
+                // Футер
+                document.querySelectorAll('.footer-column')[0].querySelector('p').textContent = t.footerAbout;
+                document.querySelectorAll('.footer-column')[1].querySelector('h3').textContent = t.footerProduct;
+                document.querySelectorAll('.footer-column')[2].querySelector('h3').textContent = t.footerCompany;
+                document.querySelectorAll('.footer-column')[3].querySelector('h3').textContent = t.footerLegal;
+                document.querySelectorAll('.footer-column')[4].querySelector('h3').textContent = t.footerContact;
+                
+                // Форма
+                document.querySelector('#formContent h2').textContent = t.formTitle;
+                document.querySelector('#formContent p').textContent = t.formDescription;
+                document.querySelector('label[for="name"]').innerHTML = t.nameLabel.replace('*', '<span class="required">*</span>');
+                document.querySelector('#name').placeholder = t.namePlaceholder;
+                document.querySelector('label[for="phone"]').innerHTML = t.phoneLabel.replace('*', '<span class="required">*</span>');
+                document.querySelector('#phone').placeholder = t.phonePlaceholder;
+                document.querySelector('label[for="company"]').innerHTML = t.companyLabel.replace('*', '<span class="required">*</span>');
+                document.querySelector('#company').placeholder = t.companyPlaceholder;
+                document.querySelector('label[for="email"]').textContent = t.emailLabel;
+                document.querySelector('#email').placeholder = t.emailPlaceholder;
+                document.querySelector('.submit-btn').textContent = t.submitButton;
+                
+                // Благодарность
+                document.querySelector('#thankYouMessage h2').textContent = t.thankYouTitle;
+                document.querySelector('#thankYouMessage p').textContent = t.thankYouText;
+                document.querySelector('#thankYouMessage .cta-button').textContent = t.closeButton;
+                
+                // Обновить язык документа
+                document.documentElement.lang = lang;
+            }
+            
+            // Применить немецкий по умолчанию
+            applyTranslation('de');
+            
+            // 5. Переключение языка
+            const langButtons = document.querySelectorAll('.lang-btn');
             langButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const lang = this.getAttribute('data-lang');
@@ -933,19 +1414,59 @@
                     this.classList.add('active');
                     
                     // Применить переводы
-                    document.querySelector('.hero h1').innerHTML = translations[lang].heroTitle;
-                    document.querySelector('.hero p').textContent = translations[lang].heroText;
-                    document.querySelector('.hero-buttons .cta-button').textContent = translations[lang].ctaButton;
-                    document.querySelector('#features .section-title').innerHTML = translations[lang].featuresTitle;
-                    document.querySelector('#how-it-works .section-title').innerHTML = translations[lang].howItWorksTitle;
-                    document.querySelector('#industries .section-title').innerHTML = translations[lang].industriesTitle;
-                    document.querySelector('#testimonials .section-title').innerHTML = translations[lang].testimonialsTitle;
-                    document.querySelector('.cta-section h2').textContent = translations[lang].ctaTitle;
-                    document.querySelector('.cta-section p').textContent = translations[lang].ctaText;
+                    applyTranslation(lang);
                 });
             });
             
-            // Плавная прокрутка
+            // 6. Форма обратной связи
+            const modal = document.getElementById('contactFormModal');
+            const openFormButtons = document.querySelectorAll('.open-form');
+            const closeModalButton = document.querySelector('.close-modal');
+            const contactForm = document.getElementById('contactForm');
+            const formContent = document.getElementById('formContent');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            
+            // Открыть форму
+            openFormButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Закрыть форму
+            closeModalButton.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Закрыть форму при клике вне ее
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Обработка формы
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Здесь обычно отправка на сервер
+                // Для демо просто покажем сообщение
+                formContent.style.display = 'none';
+                thankYouMessage.style.display = 'block';
+                
+                // Сброс формы через 5 секунд
+                setTimeout(() => {
+                    contactForm.reset();
+                    formContent.style.display = 'block';
+                    thankYouMessage.style.display = 'none';
+                }, 5000);
+            });
+            
+            // 7. Плавная прокрутка
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -960,34 +1481,15 @@
                         });
                         
                         // Закрыть мобильное меню
-                        if (window.innerWidth <= 768) {
+                        if (window.innerWidth <= 992) {
                             navLinks.style.display = 'none';
                         }
                     }
                 });
             });
             
-            // Анимация при прокрутке
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
-                });
-            }, observerOptions);
-            
-            // Наблюдать за элементами для анимации
-            document.querySelectorAll('.feature-card, .step, .industry-card, .testimonial-card').forEach(el => {
-                observer.observe(el);
-            });
-            
-            // Динамическое обновление года в футере
-            document.querySelector('.copyright p').innerHTML = document.querySelector('.copyright p').innerHTML.replace('2026', new Date().getFullYear());
+            // 8. Обновить год в футере
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
         });
     </script>
 </body>
