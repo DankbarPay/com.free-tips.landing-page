@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
             navIndustries: 'Branchen',
             navTestimonials: 'Kundenstimmen',
             navCTA: 'Kostenlos starten',
-            heroTitle: 'Digitale Trinkgelder <span>ohne Kleingeld</span>',
-            heroText: 'Stimmtso ermöglicht Restaurants, Cafés, Friseuren, Autowaschanlagen und Dienstleistungsunternehmen, digitale Trinkgelder einfach anzunehmen. Kein Bargeld nötig – einfach scannen und Trinkgeld geben.',
+            heroTitle: 'Bargeldlose Trinkgelder <span>Direkt an Ihre Mitarbeiter</span>',
+            heroText: 'Wir sind ein digitaler Service in Deutschland, der es Gästen von Restaurants, Bars und Hotels ermöglicht, mit Karte oder Telefon Trinkgeld zu hinterlassen. Unser System ist so eingerichtet, dass dieses Geld das Konto der Einrichtung überschreitet und sofort, vollständig, an das Personal (Kellner, Barkeeper) und nicht an die Besitzer gelangt',
             heroCTA: 'Kostenlos testen',
             heroSecondary: 'So funktioniert\'s',
             qrHint: 'Scannen Sie mit Ihrem Smartphone',
@@ -45,6 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
             feature5Text: 'Vollständig konform mit deutschen Steuervorschriften und Trinkgeldgesetzen. Automatisierte Berichte vereinfachen die Buchhaltung.',
             feature6Title: 'Schnelle Integration',
             feature6Text: 'Verbinden Sie sich mit Ihren bestehenden Kassensystemen oder nutzen Sie die Standalone-Lösung. In weniger als 10 Minuten startklar.',
+            feature7Title: 'Sicherheit',
+            feature7Text: 'Die Zahlungen des Gastes gehen direkt an das Unternehmen oder den Mitarbeiter. Unsere Plattform speichert oder leitet keine Gelder weiter.',
+            feature8Title: 'Transparente Preise',
+            feature8Text: 'Die Plattform erhält eine feste Nutzungsgebühr ohne versteckte Kosten. Keine zusätzlichen Gebühren für Sie oder Ihre Mitarbeiter.',
+            feature9Title: 'Kein Zwang für Gäste',
+            feature9Text: 'Wir diktieren Gästen nicht die Höhe des Trinkgelds. Volle Entscheidungsfreiheit für jeden Gast – wir geben nur die Möglichkeit.',
             howItWorksTitle: 'So <span>funktioniert es</span>',
             step1Title: 'Kostenlos anmelden',
             step1Text: 'Erstellen Sie in wenigen Minuten Ihr Geschäftskonto. Keine Einrichtungsgebühren oder monatlichen Kosten. Nur Bezahlung pro Transaktion.',
@@ -101,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
             emailPlaceholder: 'ihre.email@beispiel.de',
             submitButton: 'Jetzt kostenlos testen',
             thankYouTitle: 'Vielen Dank!',
-            thankYouText: 'Ihre Anfrage wurde erfolgreich übermittelt. Мы werden uns innerhalb von 24 Stunden bei Ihnen melden, um Ihre kostenlose Testversion von Stimmtso einzurichten.',
+            thankYouText: 'Ihre Anfrage wurde erfolgreich übermittelt. Wir werden uns innerhalb von 24 Stunden bei Ihnen melden, um Ihre kostenlose Testversion von Stimmtso einzurichten.',
             closeButton: 'Schließen'
         },
         en: {
@@ -110,8 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
             navIndustries: 'Industries',
             navTestimonials: 'Testimonials',
             navCTA: 'Get Started',
-            heroTitle: 'Digital Tips <span>Without the Change</span>',
-            heroText: 'Stimmtso enables restaurants, cafés, barbers, car washes and service businesses to accept digital tips easily. No cash needed – just scan and tip.',
+            heroTitle: 'Cashless Tips <span>Directly to Your Employees</span>',
+            heroText: 'We are a digital service in Germany that allows guests of restaurants, bars, and hotels to leave tips with a card or phone. Our system is set up so that this money bypasses the establishment\'s account and goes immediately, in full, to the staff (waiters, bartenders) and not to the owners.',
             heroCTA: 'Start Free Trial',
             heroSecondary: 'See How It Works',
             qrHint: 'Scan with your smartphone',
@@ -128,6 +134,12 @@ document.addEventListener('DOMContentLoaded', function() {
             feature5Text: 'Fully compliant with German tax regulations and tipping laws. Automated reporting simplifies accounting.',
             feature6Title: 'Fast Integration',
             feature6Text: 'Connect with your existing POS systems or use standalone. Get started in less than 10 minutes.',
+            feature7Title: 'Security',
+            feature7Text: 'Guest payments go directly to the business or employee. Our platform does not store or route any funds.',
+            feature8Title: 'Transparent Pricing',
+            feature8Text: 'The platform receives a fixed usage fee with no hidden costs. No additional fees for you or your employees.',
+            feature9Title: 'No Pressure for Guests',
+            feature9Text: 'We don\'t dictate tip amounts to guests. Full freedom of choice for every guest – we only provide the possibility.',
             howItWorksTitle: 'How It <span>Works</span>',
             step1Title: 'Sign Up Free',
             step1Text: 'Create your business account in minutes. No setup fees or monthly charges. Only pay per transaction.',
@@ -222,6 +234,12 @@ document.addEventListener('DOMContentLoaded', function() {
         features[4].querySelector('p').textContent = t.feature5Text;
         features[5].querySelector('h3').textContent = t.feature6Title;
         features[5].querySelector('p').textContent = t.feature6Text;
+        features[6].querySelector('h3').textContent = t.feature7Title;
+        features[6].querySelector('p').textContent = t.feature7Text;
+        features[7].querySelector('h3').textContent = t.feature8Title;
+        features[7].querySelector('p').textContent = t.feature8Text;
+        features[8].querySelector('h3').textContent = t.feature9Title;
+        features[8].querySelector('p').textContent = t.feature9Text;
 
         // How It Works
         document.querySelector('#how-it-works .section-title').innerHTML = t.howItWorksTitle;
