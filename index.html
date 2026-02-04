@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stimmtso - Bargeldlose Trinkgelder. Direkt an Ihre Mitarbeiter.</title>
+    <title>Stimmtso - Bargeldlose Trinkgelder für die Gastronomie</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/tip-jar.png">
@@ -14,22 +14,21 @@
 <header>
     <div class="container header-container">
         <a href="#" class="logo">
-            <i class="fas fa-coins logo-icon"></i>
-            <span>Stimmtso</span>
+            <i class="fas fa-hand-holding-heart logo-icon"></i>
+            <span class="logo-text" data-de="Stimmtso" data-en="Stimmtso">Stimmtso</span>
         </a>
 
         <nav class="nav-links">
-            <a href="#features">Funktionen</a>
-            <a href="#how-it-works">So funktioniert's</a>
-            <a href="#industries">Branchen</a>
-            <a href="#testimonials">Kundenstimmen</a>
+            <a href="#features" class="nav-link" data-de="Funktionen" data-en="Features">Funktionen</a>
+            <a href="#how-it-works" class="nav-link" data-de="So funktioniert's" data-en="How it works">So funktioniert's</a>
+            <a href="#compliance" class="nav-link" data-de="Compliance" data-en="Compliance">Compliance</a>
+            <a href="#industries" class="nav-link" data-de="Branchen" data-en="Industries">Branchen</a>
+            <a href="#testimonials" class="nav-link" data-de="Kundenstimmen" data-en="Testimonials">Kundenstimmen</a>
 
             <div class="language-switcher">
                 <button class="lang-btn active" data-lang="de">DE</button>
                 <button class="lang-btn" data-lang="en">EN</button>
             </div>
-
-            <a href="#" class="cta-button open-form">Kostenlos starten</a>
         </nav>
 
         <button class="mobile-menu-btn" aria-label="Menü öffnen">
@@ -42,22 +41,46 @@
 <section class="hero">
     <div class="container hero-content">
         <div class="hero-text">
-            <h1><span>Bargeldlose Trinkgelder</span>Direkt<span>an Ihre Mitarbeiter</span></h1>
-            <p>Wir sind ein digitaler Service in Deutschland, der es Gästen von Restaurants, Bars und Hotels ermöglicht, mit Karte oder Telefon Trinkgeld zu hinterlassen. Unser System ist so eingerichtet, dass dieses Geld das Konto der Einrichtung überschreitet und sofort, vollständig, an das Personal (Kellner, Barkeeper) und nicht an die Besitzer gelangt</p>
+            <h1 class="hero-title">
+                <span class="title-line" data-de="Bargeldlose Trinkgelder" data-en="Cashless Tips"></span>
+                <span class="title-line" data-de="für die deutsche Gastronomie" data-en="for the German Hospitality Industry"></span>
+            </h1>
+            <p class="hero-subtitle" data-de="Technische Plattform zur Abwicklung digitaler Trinkgelder für Restaurants, Bars und Hotels."
+               data-en="Technical platform for processing digital tips for restaurants, bars, and hotels.">
+                Technische Plattform zur Abwicklung digitaler Trinkgelder für Restaurants, Bars und Hotels.
+            </p>
+            <p class="hero-description" data-de="Stimmtso ist eine Zahlungsinfrastruktur, die es Gästen ermöglicht, Trinkgelder bargeldlos zu hinterlassen. Die Plattform tritt nicht als Dienstleister gegenüber Endkunden auf und fungiert nicht als Merchant of Record."
+               data-en="Stimmtso is a payment infrastructure that enables guests to leave tips digitally. The platform does not act as a service provider to end customers and does not function as a Merchant of Record.">
+                Stimmtso ist eine Zahlungsinfrastruktur, die es Gästen ermöglicht, Trinkgelder bargeldlos zu hinterlassen. Die Plattform tritt nicht als Dienstleister gegenüber Endkunden auf und fungiert nicht als Merchant of Record.
+            </p>
+
+            <!-- Neue Plattform-Rolle Erklärung -->
+            <div class="platform-role">
+                <div class="role-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="role-text">
+                    <h4 class="role-title" data-de="Zahlungsabwicklung & Compliance" data-en="Payment Processing & Compliance">Zahlungsabwicklung & Compliance</h4>
+                    <p class="role-description" data-de="Stimmtso ist eine technische Plattform zur Abwicklung bargeldloser Trinkgelder. Zahlungen erfolgen zugunsten der jeweiligen teilnehmenden Betriebe oder Mitarbeitenden gemäß den geltenden rechtlichen Rahmenbedingungen."
+                       data-en="Stimmtso is a technical platform for processing cashless tips. Payments are made for the benefit of the respective participating businesses or employees in accordance with applicable legal frameworks.">
+                        Stimmtso ist eine technische Plattform zur Abwicklung bargeldloser Trinkgelder. Zahlungen erfolgen zugunsten der jeweiligen teilnehmenden Betriebe oder Mitarbeitenden gemäß den geltenden rechtlichen Rahmenbedingungen.
+                    </p>
+                </div>
+            </div>
+
             <div class="hero-buttons">
-                <a href="#" class="cta-button open-form">Kostenlos testen</a>
-                <a href="#how-it-works" class="cta-button secondary-button">So funktioniert's</a>
+                <a href="#" class="cta-button open-form" data-de="Kostenlos testen" data-en="Start Free Trial">Kostenlos testen</a>
+                <a href="#how-it-works" class="cta-button secondary-button" data-de="So funktioniert's" data-en="See How It Works">So funktioniert's</a>
             </div>
         </div>
         <div class="hero-visual">
             <div class="qr-visual">
-                <!-- QR Code that opens contact form when scanned -->
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://stimmtso.de/contact-form&format=svg&color=4F46E5&bgcolor=F9FAFB&qzone=1"
                      alt="QR Code zum Kontaktformular - Scannen Sie mich mit Ihrem Smartphone"
                      class="qr-code-image">
                 <div class="qr-hint">
                     <i class="fas fa-mobile-alt"></i>
-                    Scannen Sie mit Ihrem Smartphone
+                    <span class="qr-hint-text" data-de="Scannen Sie mit Ihrem Smartphone" data-en="Scan with your smartphone">Scannen Sie mit Ihrem Smartphone</span>
                 </div>
             </div>
         </div>
@@ -67,71 +90,101 @@
 <!-- Features Section -->
 <section id="features" class="section">
     <div class="container">
-        <h2 class="section-title">Warum <span>Stimmtso</span> wählen</h2>
+        <h2 class="section-title">
+            <span class="section-title-text" data-de="Warum Stimmtso wählen" data-en="Why Choose Stimmtso"></span>
+            <span class="section-title-highlight" data-de="Stimmtso" data-en="Stimmtso">Stimmtso</span>
+            <span class="section-title-rest" data-de=" wählen" data-en="Choose"> wählen</span>
+        </h2>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-qrcode"></i>
                 </div>
-                <h3>Einfache QR-Codes</h3>
-                <p>Erstellen Sie individuelle QR-Codes für jeden Mitarbeiter oder jedes Team. Gäste scannen einfach – kein App-Download erforderlich.</p>
+                <h3 class="feature-title" data-de="Einfache QR-Codes" data-en="Simple QR Codes">Einfache QR-Codes</h3>
+                <p class="feature-description" data-de="Erstellen Sie individuelle QR-Codes für jeden Mitarbeiter oder jedes Team. Gäste scannen einfach – kein App-Download erforderlich."
+                   data-en="Generate unique QR codes for each employee or team. Guests simply scan to tip – no app download required.">
+                    Erstellen Sie individuelle QR-Codes für jeden Mitarbeiter oder jedes Team. Gäste scannen einfach – kein App-Download erforderlich.
+                </p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-euro-sign"></i>
                 </div>
-                <h3>Höhere Trinkgelder</h3>
-                <p>Erhöhen Sie die Trinkgeldbeträge um 15–30 %, indem Sie das Trinkgeldgeben für Kunden, die nur mit Karte zahlen, bequem und zugänglich machen.</p>
+                <h3 class="feature-title" data-de="Höhere Trinkgelder" data-en="Higher Tips">Höhere Trinkgelder</h3>
+                <p class="feature-description" data-de="Erhöhen Sie die Trinkgeldbeträge um 15–30 %, indem Sie das Trinkgeldgeben für Kunden, die nur mit Karte zahlen, bequem und zugänglich machen."
+                   data-en="Increase tip amounts by 15–30% by making tipping convenient and accessible for card-only customers.">
+                    Erhöhen Sie die Trinkgeldbeträge um 15–30 %, indem Sie das Trinkgeldgeben für Kunden, die nur mit Karte zahlen, bequem und zugänglich machen.
+                </p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
-                <h3>Echtzeit-Analytik</h3>
-                <p>Verfolgen Sie Trinkgelder, Leistung und Gästezufriedenheit über unser umfassendes Dashboard mit Exportfunktionen.</p>
+                <h3 class="feature-title" data-de="Echtzeit-Analytik" data-en="Real-time Analytics">Echtzeit-Analytik</h3>
+                <p class="feature-description" data-de="Verfolgen Sie Trinkgelder, Leistung und Gästezufriedenheit über unser umfassendes Dashboard mit Exportfunktionen."
+                   data-en="Track tips, performance, and guest satisfaction through our comprehensive dashboard with export capabilities.">
+                    Verfolgen Sie Trinkgelder, Leistung und Gästezufriedenheit über unser umfassendes Dashboard mit Exportfunktionen.
+                </p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <h3>Team-Management</h3>
-                <p>Verteilen Sie Trinkgelder einfach unter Teams mit anpassbaren Verteilungsregeln. Stärken Sie den Teamgeist durch Transparenz.</p>
+                <h3 class="feature-title" data-de="Team-Management" data-en="Team Management">Team-Management</h3>
+                <p class="feature-description" data-de="Verteilen Sie Trinkgelder einfach unter Teams mit anpassbaren Verteilungsregeln. Stärken Sie den Teamgeist durch Transparenz."
+                   data-en="Easily distribute tips among teams with customizable allocation rules. Strengthen team spirit with transparency.">
+                    Verteilen Sie Trinkgelder einfach unter Teams mit anpassbaren Verteilungsregeln. Stärken Sie den Teamgeist durch Transparenz.
+                </p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
-                <h3>100 % konform</h3>
-                <p>Vollständig konform mit deutschen Steuervorschriften und Trinkgeldgesetzen. Automatisierte Berichte vereinfachen die Buchhaltung.</p>
+                <h3 class="feature-title" data-de="100 % konform" data-en="100% Compliant">100 % konform</h3>
+                <p class="feature-description" data-de="Vollständig konform mit deutschen Steuervorschriften und Trinkgeldgesetzen. Automatisierte Berichte vereinfachen die Buchhaltung."
+                   data-en="Fully compliant with German tax regulations and tipping laws. Automated reporting simplifies accounting.">
+                    Vollständig konform mit deutschen Steuervorschriften und Trinkgeldgesetzen. Automatisierte Berichte vereinfachen die Buchhaltung.
+                </p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-bolt"></i>
                 </div>
-                <h3>Schnelle Integration</h3>
-                <p>Verbinden Sie sich mit Ihren bestehenden Kassensystemen oder nutzen Sie die Standalone-Lösung. In weniger als 10 Minuten startklar.</p>
+                <h3 class="feature-title" data-de="Schnelle Integration" data-en="Fast Integration">Schnelle Integration</h3>
+                <p class="feature-description" data-de="Verbinden Sie sich mit Ihren bestehenden Kassensystemen oder nutzen Sie die Standalone-Lösung. In weniger als 10 Minuten startklar."
+                   data-en="Connect with your existing POS systems or use standalone. Get started in less than 10 minutes.">
+                    Verbinden Sie sich mit Ihren bestehenden Kassensystemen oder nutzen Sie die Standalone-Lösung. In weniger als 10 Minuten startklar.
+                </p>
             </div>
-            <!-- New Feature Cards -->
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-lock"></i>
                 </div>
-                <h3>Sicherheit</h3>
-                <p>Die Zahlungen des Gastes gehen direkt an das Unternehmen oder den Mitarbeiter. Unsere Plattform speichert oder leitet keine Gelder weiter.</p>
+                <h3 class="feature-title" data-de="Sicherheit" data-en="Security">Sicherheit</h3>
+                <p class="feature-description" data-de="Die Zahlungen werden gemäß den geltenden rechtlichen Rahmenbedingungen verarbeitet. Unsere Plattform speichert keine Gelder."
+                   data-en="Guest payments go directly to the business or employee. Our platform does not store any funds.">
+                    Die Zahlungen werden gemäß den geltenden rechtlichen Rahmenbedingungen verarbeitet. Unsere Plattform speichert keine Gelder.
+                </p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-tag"></i>
                 </div>
-                <h3>Transparente Preise</h3>
-                <p>Die Plattform erhält eine feste Nutzungsgebühr ohne versteckte Kosten. Keine zusätzlichen Gebühren für Sie oder Ihre Mitarbeiter.</p>
+                <h3 class="feature-title" data-de="Transparente Preise" data-en="Transparent Pricing">Transparente Preise</h3>
+                <p class="feature-description" data-de="Die Plattform erhält eine feste Nutzungsgebühr ohne versteckte Kosten. Keine zusätzlichen Gebühren für Sie oder Ihre Mitarbeiter."
+                   data-en="The platform receives a fixed usage fee with no hidden costs. No additional fees for you or your employees.">
+                    Die Plattform erhält eine feste Nutzungsgebühr ohne versteckte Kosten. Keine zusätzlichen Gebühren für Sie oder Ihre Mitarbeiter.
+                </p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-hand-holding-heart"></i>
                 </div>
-                <h3>Kein Zwang für Gäste</h3>
-                <p>Wir diktieren Gästen nicht die Höhe des Trinkgelds. Volle Entscheidungsfreiheit für jeden Gast – wir geben nur die Möglichkeit.</p>
+                <h3 class="feature-title" data-de="Kein Zwang für Gäste" data-en="No Pressure for Guests">Kein Zwang für Gäste</h3>
+                <p class="feature-description" data-de="Wir diktieren Gästen nicht die Höhe des Trinkgelds. Volle Entscheidungsfreiheit für jeden Gast – wir geben nur die Möglichkeit."
+                   data-en="We don't dictate tip amounts to guests. Full freedom of choice for every guest – we only provide the possibility.">
+                    Wir diktieren Gästen nicht die Höhe des Trinkgelds. Volle Entscheidungsfreiheit für jeden Gast – wir geben nur die Möglichkeit.
+                </p>
             </div>
         </div>
     </div>
@@ -140,27 +193,89 @@
 <!-- How It Works -->
 <section id="how-it-works" class="section bg-light">
     <div class="container">
-        <h2 class="section-title">So <span>funktioniert es</span></h2>
+        <h2 class="section-title">
+            <span class="section-title-text" data-de="So funktioniert es" data-en="How It Works"></span>
+        </h2>
         <div class="steps-container">
             <div class="step">
                 <div class="step-number">1</div>
-                <h3>Kostenlos anmelden</h3>
-                <p>Erstellen Sie in wenigen Minuten Ihr Geschäftskonto. Keine Einrichtungsgebühren oder monatlichen Kosten. Nur Bezahlung pro Transaktion.</p>
+                <h3 class="step-title" data-de="Kostenlos anmelden" data-en="Sign Up Free">Kostenlos anmelden</h3>
+                <p class="step-description" data-de="Erstellen Sie in wenigen Minuten Ihr Geschäftskonto. Keine Einrichtungsgebühren oder monatlichen Kosten. Nur Bezahlung pro Transaktion."
+                   data-en="Create your business account in minutes. No setup fees or monthly charges. Pay only per transaction.">
+                    Erstellen Sie in wenigen Minuten Ihr Geschäftskonto. Keine Einrichtungsgebühren oder monatlichen Kosten. Nur Bezahlung pro Transaktion.
+                </p>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
-                <h3>QR-Codes erhalten</h3>
-                <p>Generieren Sie personalisierte QR-Codes für Ihre Mitarbeiter oder Teams. Drucken Sie sie aus, zeigen Sie sie digital an oder integrieren Sie sie in Rechnungen.</p>
+                <h3 class="step-title" data-de="QR-Codes erhalten" data-en="Get Your QR Codes">QR-Codes erhalten</h3>
+                <p class="step-description" data-de="Generieren Sie personalisierte QR-Codes für Ihre Mitarbeiter oder Teams. Drucken Sie sie aus, zeigen Sie sie digital an oder integrieren Sie sie in Rechnungen."
+                   data-en="Generate personalized QR codes for your staff or teams. Print them, display digitally, or embed them in receipts.">
+                    Generieren Sie personalisierte QR-Codes für Ihre Mitarbeiter oder Teams. Drucken Sie sie aus, zeigen Sie sie digital an oder integrieren Sie sie in Rechnungen.
+                </p>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
-                <h3>Trinkgelder erhalten</h3>
-                <p>Gäste scannen den Code mit jeder Smartphone-Kamera und geben Trinkgeld mit ihrer bevorzugten Zahlungsmethode.</p>
+                <h3 class="step-title" data-de="Trinkgelder erhalten" data-en="Start Receiving Tips">Trinkgelder erhalten</h3>
+                <p class="step-description" data-de="Gäste scannen den Code mit jeder Smartphone-Kamera und geben Trinkgeld mit ihrer bevorzugten Zahlungsmethode."
+                   data-en="Guests scan the code with any smartphone camera and tip using their preferred payment method.">
+                    Gäste scannen den Code mit jeder Smartphone-Kamera und geben Trinkgeld mit ihrer bevorzugten Zahlungsmethode.
+                </p>
             </div>
             <div class="step">
                 <div class="step-number">4</div>
-                <h3>Automatische Auszahlungen</h3>
-                <p>Trinkgelder gehen direkt auf die Bankkonten der Mitarbeiter. Flexible Verteilungsregeln und Echtzeit-Verfolgung.</p>
+                <h3 class="step-title" data-de="Transparente Auszahlungen" data-en="Transparent Payouts">Transparente Auszahlungen</h3>
+                <p class="step-description" data-de="Trinkgelder werden transparent und nachvollziehbar an die berechtigten Empfänger ausgezahlt. Flexible Verteilungsregeln und Echtzeit-Verfolgung."
+                   data-en="Tips are paid out transparently and traceably to the authorized recipients. Flexible distribution rules and real-time tracking.">
+                    Trinkgelder werden transparent und nachvollziehbar an die berechtigten Empfänger ausgezahlt. Flexible Verteilungsregeln und Echtzeit-Verfolgung.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Compliance Section -->
+<section id="compliance" class="section compliance-section">
+    <div class="container">
+        <h2 class="section-title">
+            <span class="section-title-text" data-de="Technische Compliance" data-en="Technical Compliance"></span>
+        </h2>
+        <div class="compliance-content">
+            <div class="compliance-text">
+                <h3 class="compliance-subtitle" data-de="Adyen-konforme Zahlungsinfrastruktur" data-en="Adyen-compliant payment infrastructure">Adyen-konforme Zahlungsinfrastruktur</h3>
+                <p class="compliance-description" data-de="Stimmtso implementiert eine technische Plattform gemäß den Adyen-Richtlinien für Zahlungsabwicklung. Unsere Architektur folgt dem empfohlenen Account-Struktur-Modell für Plattformen."
+                   data-en="Stimmtso implements a technical platform according to Adyen guidelines for payment processing. Our architecture follows the recommended account structure model for platforms.">
+                    Stimmtso implementiert eine technische Plattform gemäß den Adyen-Richtlinien für Zahlungsabwicklung. Unsere Architektur folgt dem empfohlenen Account-Struktur-Modell für Plattformen.
+                </p>
+
+                <div class="compliance-points">
+                    <div class="compliance-point">
+                        <i class="fas fa-check-circle"></i>
+                        <span class="compliance-point-text" data-de="Klare Trennung von Sub-Merchant Accounts" data-en="Clear separation of Sub-Merchant Accounts">Klare Trennung von Sub-Merchant Accounts</span>
+                    </div>
+                    <div class="compliance-point">
+                        <i class="fas fa-check-circle"></i>
+                        <span class="compliance-point-text" data-de="Transparente Zahlungsflüsse gemäß Adyen-Dokumentation" data-en="Transparent payment flows according to Adyen documentation">Transparente Zahlungsflüsse gemäß Adyen-Dokumentation</span>
+                    </div>
+                    <div class="compliance-point">
+                        <i class="fas fa-check-circle"></i>
+                        <span class="compliance-point-text" data-de="Technische Infrastruktur ohne Gelderverwahrung" data-en="Technical infrastructure without fund holding">Technische Infrastruktur ohne Gelderverwahrung</span>
+                    </div>
+                    <div class="compliance-point">
+                        <i class="fas fa-check-circle"></i>
+                        <span class="compliance-point-text" data-de="Compliance mit deutschen und EU-Zahlungsvorschriften" data-en="Compliance with German and EU payment regulations">Compliance mit deutschen und EU-Zahlungsvorschriften</span>
+                    </div>
+                </div>
+            </div>
+            <div class="compliance-visual">
+                <div class="compliance-card">
+                    <img src="images/adyen.svg"
+                         alt="Adyen Account Structure - Financial Products Diagram"
+                         class="compliance-image">
+                    <div class="compliance-caption">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span class="compliance-caption-text" data-de="Adyen Account Structure - Financial Products" data-en="Adyen Account Structure - Financial Products">Adyen Account Structure - Financial Products</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -169,63 +284,77 @@
 <!-- Industries -->
 <section id="industries" class="section industries">
     <div class="container">
-        <h2 class="section-title">Perfekt für <span>Ihr Unternehmen</span></h2>
+        <h2 class="section-title">
+            <span class="section-title-text" data-de="Für wen ist Stimmtso geeignet" data-en="Who is Stimmtso for"></span>
+        </h2>
+        <p class="section-subtitle" data-de="Unsere Plattform ist speziell für die Gastronomie- und Dienstleistungsbranche entwickelt"
+           data-en="Our platform is specifically developed for the hospitality and service industry">
+            Unsere Plattform ist speziell für die Gastronomie- und Dienstleistungsbranche entwickelt
+        </p>
         <div class="industries-grid">
             <div class="industry-card">
                 <div class="industry-icon">
                     <i class="fas fa-utensils"></i>
                 </div>
-                <h3>Restaurants & Cafés</h3>
-                <p>Servicekräfte, Barkeeper und Empfangsmitarbeiter erhalten Trinkgelder direkt.</p>
+                <h3 class="industry-title" data-de="Restaurants" data-en="Restaurants">Restaurants</h3>
+                <p class="industry-description" data-de="Servicekräfte und Barkeeper erhalten Trinkgelder digital"
+                   data-en="Waitstaff and bartenders receive tips digitally">Servicekräfte und Barkeeper erhalten Trinkgelder digital</p>
             </div>
             <div class="industry-card">
                 <div class="industry-icon">
-                    <i class="fas fa-cut"></i>
+                    <i class="fas fa-coffee"></i>
                 </div>
-                <h3>Friseure & Salons</h3>
-                <p>Friseure, Stylisten und Kosmetikerinnen erhalten digitale Trinkgelder.</p>
+                <h3 class="industry-title" data-de="Cafés & Bistros" data-en="Cafés & Bistros">Cafés & Bistros</h3>
+                <p class="industry-description" data-de="Einfache Trinkgeldabwicklung für kleine und mittlere Betriebe"
+                   data-en="Simple tip processing for small and medium-sized businesses">Einfache Trinkgeldabwicklung für kleine und mittlere Betriebe</p>
             </div>
             <div class="industry-card">
                 <div class="industry-icon">
-                    <i class="fas fa-car"></i>
+                    <i class="fas fa-glass-martini-alt"></i>
                 </div>
-                <h3>Autowaschanlagen</h3>
-                <p>Mitarbeiter erhalten Wertschätzung für hervorragenden Service.</p>
+                <h3 class="industry-title" data-de="Bars & Lounges" data-en="Bars & Lounges">Bars & Lounges</h3>
+                <p class="industry-description" data-de="Digitale Trinkgelder für Barkeeper und Servicepersonal"
+                   data-en="Digital tips for bartenders and service staff">Digitale Trinkgelder für Barkeeper und Servicepersonal</p>
             </div>
             <div class="industry-card">
                 <div class="industry-icon">
                     <i class="fas fa-hotel"></i>
                 </div>
-                <h3>Hotels</h3>
-                <p>Porter, Hauspersonal und Concierge-Mitarbeiter profitieren.</p>
+                <h3 class="industry-title" data-de="Hotels" data-en="Hotels">Hotels</h3>
+                <p class="industry-description" data-de="Porter, Concierge und Housekeeping profitieren von digitalen Trinkgeldern"
+                   data-en="Porters, concierge, and housekeeping benefit from digital tips">Porter, Concierge und Housekeeping profitieren von digitalen Trinkgeldern</p>
             </div>
             <div class="industry-card">
                 <div class="industry-icon">
-                    <i class="fas fa-truck"></i>
+                    <i class="fas fa-cut"></i>
                 </div>
-                <h3>Lieferdienste</h3>
-                <p>Fahrer erhalten Trinkgelder direkt zu ihrem Verdienst hinzugefügt.</p>
+                <h3 class="industry-title" data-de="Friseure & Salons" data-en="Barbers & Salons">Friseure & Salons</h3>
+                <p class="industry-description" data-de="Friseure und Stylisten erhalten digitale Wertschätzung"
+                   data-en="Hairdressers and stylists receive digital appreciation">Friseure und Stylisten erhalten digitale Wertschätzung</p>
             </div>
             <div class="industry-card">
                 <div class="industry-icon">
                     <i class="fas fa-spa"></i>
                 </div>
-                <h3>Wellness & Fitness</h3>
-                <p>Trainer, Therapeuten und Instruktoren erhalten digitale Trinkgelder.</p>
+                <h3 class="industry-title" data-de="Wellness & Spa" data-en="Wellness & Spa">Wellness & Spa</h3>
+                <p class="industry-description" data-de="Therapeuten und Masseure erhalten Trinkgelder bargeldlos"
+                   data-en="Therapists and masseurs receive tips cashless">Therapeuten und Masseure erhalten Trinkgelder bargeldlos</p>
             </div>
             <div class="industry-card">
                 <div class="industry-icon">
                     <i class="fas fa-taxi"></i>
                 </div>
-                <h3>Taxi-Dienste</h3>
-                <p>Taxifahrer erhalten Trinkgelder bequem per digitaler Zahlung.</p>
+                <h3 class="industry-title" data-de="Taxi-Dienste" data-en="Taxi Services">Taxi-Dienste</h3>
+                <p class="industry-description" data-de="Fahrer erhalten Trinkgelder bequem per digitaler Zahlung"
+                   data-en="Drivers receive tips conveniently via digital payment">Fahrer erhalten Trinkgelder bequem per digitaler Zahlung</p>
             </div>
             <div class="industry-card">
                 <div class="industry-icon">
                     <i class="fas fa-concierge-bell"></i>
                 </div>
-                <h3>Event-Services</h3>
-                <p>Catering- und Event-Mitarbeiter sammeln Trinkgelder einfach ein.</p>
+                <h3 class="industry-title" data-de="Catering & Events" data-en="Catering & Events">Catering & Events</h3>
+                <p class="industry-description" data-de="Event-Mitarbeiter sammeln Trinkgelder einfach ein"
+                   data-en="Event staff easily collect tips">Event-Mitarbeiter sammeln Trinkgelder einfach ein</p>
             </div>
         </div>
     </div>
@@ -234,41 +363,46 @@
 <!-- Testimonials -->
 <section id="testimonials" class="section">
     <div class="container">
-        <h2 class="section-title">Was unsere <span>Kunden sagen</span></h2>
+        <h2 class="section-title">
+            <span class="section-title-text" data-de="Was unsere Kunden sagen" data-en="What Our Clients Say"></span>
+        </h2>
         <div class="testimonials-container">
             <div class="testimonial-card">
-                <div class="testimonial-text">
+                <div class="testimonial-text" data-de="Seit der Einführung von Stimmtso haben sich die Trinkgelder unseres Personals um 22 % erhöht. Das System ist für unser Team und die Gäste unglaublich einfach."
+                     data-en="Since implementing Stimmtso, our staff tips have increased by 22%. The system is incredibly easy for both our team and guests.">
                     Seit der Einführung von Stimmtso haben sich die Trinkgelder unseres Personals um 22 % erhöht. Das System ist für unser Team und die Gäste unglaublich einfach.
                 </div>
                 <div class="testimonial-author">
                     <div class="author-avatar" aria-hidden="true">MS</div>
                     <div>
-                        <h4>Maria Schmidt</h4>
-                        <p>Restaurantbesitzerin, Berlin</p>
+                        <h4 class="author-name" data-de="Maria Schmidt" data-en="Maria Schmidt">Maria Schmidt</h4>
+                        <p class="author-role" data-de="Restaurantbesitzerin, Berlin" data-en="Restaurant Owner, Berlin">Restaurantbesitzerin, Berlin</p>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card">
-                <div class="testimonial-text">
+                <div class="testimonial-text" data-de="Als Friseur habe ich früher Trinkgelder verpasst, wenn Kunden nur Karten dabeihatten. Jetzt erhalte ich täglich Trinkgelder über Stimmtso – das hat mein Einkommen erheblich verändert."
+                     data-en="As a barber, I used to miss out on tips when clients only had cards. Now I receive tips daily through Stimmtso – it's changed my earnings significantly.">
                     Als Friseur habe ich früher Trinkgelder verpasst, wenn Kunden nur Karten dabeihatten. Jetzt erhalte ich täglich Trinkgelder über Stimmtso – das hat mein Einkommen erheblich verändert.
                 </div>
                 <div class="testimonial-author">
                     <div class="author-avatar" aria-hidden="true">TJ</div>
                     <div>
-                        <h4>Thomas Jäger</h4>
-                        <p>Friseursalon, Hamburg</p>
+                        <h4 class="author-name" data-de="Thomas Jäger" data-en="Thomas Jäger">Thomas Jäger</h4>
+                        <p class="author-role" data-de="Friseursalon, Hamburg" data-en="Barbershop, Hamburg">Friseursalon, Hamburg</p>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card">
-                <div class="testimonial-text">
+                <div class="testimonial-text" data-de="Die Team-Verteilungsfunktion hat alle Streitigkeiten über die Trinkgeldaufteilung beseitigt. Unsere Mitarbeiter lieben die Transparenz und sofortigen Auszahlungen."
+                     data-en="The team distribution feature has eliminated all disputes about tip sharing. Our employees love the transparency and instant payouts.">
                     Die Team-Verteilungsfunktion hat alle Streitigkeiten über die Trinkgeldaufteilung beseitigt. Unsere Mitarbeiter lieben die Transparenz und sofortigen Auszahlungen.
                 </div>
                 <div class="testimonial-author">
                     <div class="author-avatar" aria-hidden="true">AK</div>
                     <div>
-                        <h4>Anna Keller</h4>
-                        <p>Café-Managerin, München</p>
+                        <h4 class="author-name" data-de="Anna Keller" data-en="Anna Keller">Anna Keller</h4>
+                        <p class="author-role" data-de="Café-Managerin, München" data-en="Café Manager, Munich">Café-Managerin, München</p>
                     </div>
                 </div>
             </div>
@@ -279,10 +413,16 @@
 <!-- CTA Section -->
 <section class="cta-section">
     <div class="container">
-        <h2>Bereit, Ihre Trinkgelder zu erhöhen?</h2>
-        <p>Schließen Sie sich Hunderten von Dienstleistungsunternehmen in Deutschland an, die bereits Stimmtso nutzen, um digitale Trinkgelder zu vereinfachen und das Einkommen der Mitarbeiter zu steigern.</p>
-        <a href="#" class="cta-button open-form">Jetzt kostenlos testen</a>
-        <p class="cta-subtext">Keine Kreditkarte erforderlich • Kostenlose Einrichtungsunterstützung • Jederzeit kündbar</p>
+        <h2 class="cta-title" data-de="Bereit, Ihre Trinkgelder zu erhöhen?" data-en="Ready to Increase Your Tips?">Bereit, Ihre Trinkgelder zu erhöhen?</h2>
+        <p class="cta-description" data-de="Schließen Sie sich Hunderten von Gastronomiebetrieben in Deutschland an, die bereits Stimmtso nutzen, um digitale Trinkgelder zu vereinfachen und das Einkommen der Mitarbeiter zu steigern."
+           data-en="Join hundreds of hospitality businesses across Germany already using Stimmtso to simplify digital tipping and boost employee earnings.">
+            Schließen Sie sich Hunderten von Gastronomiebetrieben in Deutschland an, die bereits Stimmtso nutzen, um digitale Trinkgelder zu vereinfachen und das Einkommen der Mitarbeiter zu steigern.
+        </p>
+        <a href="#" class="cta-button open-form" data-de="Jetzt kostenlos testen" data-en="Start Your Free Trial Now">Jetzt kostenlos testen</a>
+        <p class="cta-subtext" data-de="Keine Kreditkarte erforderlich • Kostenlose Einrichtungsunterstützung • Jederzeit kündbar"
+           data-en="No credit card required • Free setup support • Cancel anytime">
+            Keine Kreditkarte erforderlich • Kostenlose Einrichtungsunterstützung • Jederzeit kündbar
+        </p>
     </div>
 </section>
 
@@ -291,33 +431,47 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-column">
-                <h3>Stimmtso</h3>
-                <p>Digitale Trinkgeldlösungen für Deutschlands Dienstleistungsbranche. Machen Sie das Trinkgeldgeben einfach, transparent und profitabel für alle.</p>
+                <h3 class="footer-logo" data-de="Stimmtso" data-en="Stimmtso">Stimmtso</h3>
+                <p class="footer-description" data-de="Technische Plattform für digitale Trinkgeldlösungen in der deutschen Gastronomie. Wir machen Trinkgeldgeben einfach, transparent und effizient."
+                   data-en="Technical platform for digital tipping solutions in the German hospitality industry. We make tipping easy, transparent, and efficient.">
+                    Technische Plattform für digitale Trinkgeldlösungen in der deutschen Gastronomie. Wir machen Trinkgeldgeben einfach, transparent und effizient.
+                </p>
             </div>
             <div class="footer-column">
-                <h3>Produkt</h3>
+                <h3 class="footer-heading" data-de="Produkt" data-en="Product">Produkt</h3>
                 <ul>
-                    <li><a href="#features">Funktionen</a></li>
-                    <li><a href="#how-it-works">So funktioniert's</a></li>
-                    <li><a href="#industries">Branchen</a></li>
-                    <li><a href="#testimonials">Kundenstimmen</a></li>
+                    <li><a href="#features" data-de="Funktionen" data-en="Features">Funktionen</a></li>
+                    <li><a href="#how-it-works" data-de="So funktioniert's" data-en="How it works">So funktioniert's</a></li>
+                    <li><a href="#compliance" data-de="Compliance" data-en="Compliance">Compliance</a></li>
+                    <li><a href="#industries" data-de="Branchen" data-en="Industries">Branchen</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>Rechtliches</h3>
+                <h3 class="footer-heading" data-de="Unternehmen" data-en="Company">Unternehmen</h3>
                 <ul>
-                    <li><a href="#terms">Terms and Fees</a></li>
-                    <li><a href="#privacy">Privacy</a></li>
+                    <li><a href="#testimonials" data-de="Kundenstimmen" data-en="Testimonials">Kundenstimmen</a></li>
+                    <li><a href="#contact" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>Kontakt</h3>
+                <h3 class="footer-heading" data-de="Kontakt" data-en="Contact">Kontakt</h3>
+                <p><strong>Dankbar Tech GmbH</strong></p>
                 <p>Berlin, Deutschland</p>
+                <p>Telefon: <a href="tel:+491633389404">+49 163 3389404</a></p>
+                <p>E-Mail: <a href="mailto:info@stimmtso.app">info@stimmtso.app</a></p>
             </div>
         </div>
-        <div class="copyright">
-            <p>&copy; <span id="currentYear"></span> Stimmtso GmbH. Alle Rechte vorbehalten.</p>
-            <p>Diese Website dient Demonstrationszwecken für die Adyen-Integration.</p>
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> Dankbar Tech GmbH. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span></p>
+                <p><span data-de="Diese Website dient Demonstrationszwecken für die Adyen-Integration." data-en="This website serves demonstration purposes for Adyen integration.">Diese Website dient Demonstrationszwecken für die Adyen-Integration.</span></p>
+            </div>
+            <div class="footer-compliance">
+                <p data-de="Stimmtso ist eine technische Plattform und tritt nicht als Merchant of Record auf."
+                   data-en="Stimmtso is a technical platform and does not act as a Merchant of Record.">
+                    Stimmtso ist eine technische Plattform und tritt nicht als Merchant of Record auf.
+                </p>
+            </div>
         </div>
     </div>
 </footer>
@@ -328,39 +482,57 @@
         <button class="close-modal" aria-label="Formular schließen">&times;</button>
 
         <div id="formContent">
-            <h2>Kostenlose Testversion starten</h2>
-            <p>Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen, um Ihre kostenlose Testversion einzurichten.</p>
+            <h2 class="form-title" data-de="Kostenlose Testversion starten" data-en="Start Free Trial">Kostenlose Testversion starten</h2>
+            <p class="form-description" data-de="Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen, um Ihre kostenlose Testversion einzurichten."
+               data-en="Fill out the form and we'll contact you within 24 hours to set up your free trial.">
+                Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen, um Ihre kostenlose Testversion einzurichten.
+            </p>
 
             <form id="contactForm">
                 <div class="form-group">
-                    <label for="name">Name <span class="required">*</span></label>
-                    <input type="text" id="name" name="name" required placeholder="Ihr Vor- und Nachname">
+                    <label for="name" class="form-label" data-de="Name *" data-en="Name *">Name *</label>
+                    <input type="text" id="name" name="name" required
+                           data-de-placeholder="Ihr Vor- und Nachname"
+                           data-en-placeholder="Your first and last name"
+                           placeholder="Ihr Vor- und Nachname">
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Telefonnummer <span class="required">*</span></label>
-                    <input type="tel" id="phone" name="phone" required placeholder="+49 123 456789">
+                    <label for="phone" class="form-label" data-de="Telefonnummer *" data-en="Phone Number *">Telefonnummer *</label>
+                    <input type="tel" id="phone" name="phone" required
+                           data-de-placeholder="+49 123 456789"
+                           data-en-placeholder="+49 123 456789"
+                           placeholder="+49 123 456789">
                 </div>
 
                 <div class="form-group">
-                    <label for="company">Unternehmen <span class="required">*</span></label>
-                    <input type="text" id="company" name="company" required placeholder="Name Ihres Unternehmens">
+                    <label for="company" class="form-label" data-de="Unternehmen *" data-en="Company *">Unternehmen *</label>
+                    <input type="text" id="company" name="company" required
+                           data-de-placeholder="Name Ihres Unternehmens"
+                           data-en-placeholder="Your company name"
+                           placeholder="Name Ihres Unternehmens">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">E-Mail (optional)</label>
-                    <input type="email" id="email" name="email" placeholder="ihre.email@beispiel.de">
+                    <label for="email" class="form-label" data-de="E-Mail (optional)" data-en="Email (optional)">E-Mail (optional)</label>
+                    <input type="email" id="email" name="email"
+                           data-de-placeholder="ihre.email@beispiel.de"
+                           data-en-placeholder="your.email@example.com"
+                           placeholder="ihre.email@beispiel.de">
                 </div>
 
-                <button type="submit" class="submit-btn">Jetzt kostenlos testen</button>
+                <button type="submit" class="submit-btn" data-de="Jetzt kostenlos testen" data-en="Start Free Trial Now">Jetzt kostenlos testen</button>
             </form>
         </div>
 
         <div class="thank-you-message" id="thankYouMessage">
             <i class="fas fa-check-circle" aria-hidden="true"></i>
-            <h2>Vielen Dank!</h2>
-            <p>Ihre Anfrage wurde erfolgreich übermittelt. Wir werden uns innerhalb von 24 Stunden bei Ihnen melden, um Ihre kostenlose Testversion von Stimmtso einzurichten.</p>
-            <button class="cta-button close-modal">Schließen</button>
+            <h2 class="thank-you-title" data-de="Vielen Dank!" data-en="Thank You!">Vielen Dank!</h2>
+            <p class="thank-you-text" data-de="Ihre Anfrage wurde erfolgreich übermittelt. Wir werden uns innerhalb von 24 Stunden bei Ihnen melden, um Ihre kostenlose Testversion von Stimmtso einzurichten."
+               data-en="Your request has been successfully submitted. We will contact you within 24 hours to set up your free trial of Stimmtso.">
+                Ihre Anfrage wurde erfolgreich übermittelt. Wir werden uns innerhalb von 24 Stunden bei Ihnen melden, um Ihre kostenlose Testversion von Stimmtso einzurichten.
+            </p>
+            <button class="cta-button close-modal" data-de="Schließen" data-en="Close">Schließen</button>
         </div>
     </div>
 </div>

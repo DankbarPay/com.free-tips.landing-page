@@ -2,329 +2,127 @@ document.addEventListener('DOMContentLoaded', function() {
     // 1. Mobile menu
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
+    const navLinksItems = navLinks.querySelectorAll('a');
 
     mobileMenuBtn.addEventListener('click', function() {
-        const isVisible = navLinks.style.display === 'flex';
-        navLinks.style.display = isVisible ? 'none' : 'flex';
+        navLinks.classList.toggle('active');
+        this.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+    });
 
-        if (!isVisible) {
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.backgroundColor = 'white';
-            navLinks.style.padding = '20px';
-            navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
         }
     });
 
-    // 2. Translations
-    const translations = {
-        de: {
-            navFeatures: 'Funktionen',
-            navHowItWorks: 'So funktioniert\'s',
-            navIndustries: 'Branchen',
-            navTestimonials: 'Kundenstimmen',
-            navCTA: 'Kostenlos starten',
-            heroTitle: 'Bargeldlose Trinkgelder <span>Direkt an Ihre Mitarbeiter</span>',
-            heroText: 'Wir sind ein digitaler Service in Deutschland, der es Gästen von Restaurants, Bars und Hotels ermöglicht, mit Karte oder Telefon Trinkgeld zu hinterlassen. Unser System ist so eingerichtet, dass dieses Geld das Konto der Einrichtung überschreitet und sofort, vollständig, an das Personal (Kellner, Barkeeper) und nicht an die Besitzer gelangt',
-            heroCTA: 'Kostenlos testen',
-            heroSecondary: 'So funktioniert\'s',
-            qrHint: 'Scannen Sie mit Ihrem Smartphone',
-            featuresTitle: 'Warum <span>Stimmtso</span> wählen',
-            feature1Title: 'Einfache QR-Codes',
-            feature1Text: 'Erstellen Sie individuelle QR-Codes für jeden Mitarbeiter oder jedes Team. Gäste scannen einfach – kein App-Download erforderlich.',
-            feature2Title: 'Höhere Trinkgelder',
-            feature2Text: 'Erhöhen Sie die Trinkgeldbeträge um 15–30 %, indem Sie das Trinkgeldgeben für Kunden, die nur mit Karte zahlen, bequem und zugänglich machen.',
-            feature3Title: 'Echtzeit-Analytik',
-            feature3Text: 'Verfolgen Sie Trinkgelder, Leistung und Gästezufriedenheit über unser umfassendes Dashboard mit Exportfunktionen.',
-            feature4Title: 'Team-Management',
-            feature4Text: 'Verteilen Sie Trinkgelder einfach unter Teams mit anpassbaren Verteilungsregeln. Stärken Sie den Teamgeist durch Transparenz.',
-            feature5Title: '100 % konform',
-            feature5Text: 'Vollständig konform mit deutschen Steuervorschriften und Trinkgeldgesetzen. Automatisierte Berichte vereinfachen die Buchhaltung.',
-            feature6Title: 'Schnelle Integration',
-            feature6Text: 'Verbinden Sie sich mit Ihren bestehenden Kassensystemen oder nutzen Sie die Standalone-Lösung. In weniger als 10 Minuten startklar.',
-            feature7Title: 'Sicherheit',
-            feature7Text: 'Die Zahlungen des Gastes gehen direkt an das Unternehmen oder den Mitarbeiter. Unsere Plattform speichert oder leitet keine Gelder weiter.',
-            feature8Title: 'Transparente Preise',
-            feature8Text: 'Die Plattform erhält eine feste Nutzungsgebühr ohne versteckte Kosten. Keine zusätzlichen Gebühren für Sie oder Ihre Mitarbeiter.',
-            feature9Title: 'Kein Zwang für Gäste',
-            feature9Text: 'Wir diktieren Gästen nicht die Höhe des Trinkgelds. Volle Entscheidungsfreiheit für jeden Gast – wir geben nur die Möglichkeit.',
-            howItWorksTitle: 'So <span>funktioniert es</span>',
-            step1Title: 'Kostenlos anmelden',
-            step1Text: 'Erstellen Sie in wenigen Minuten Ihr Geschäftskonto. Keine Einrichtungsgebühren oder monatlichen Kosten. Nur Bezahlung pro Transaktion.',
-            step2Title: 'QR-Codes erhalten',
-            step2Text: 'Generieren Sie personalisierte QR-Codes für Ihre Mitarbeiter oder Teams. Drucken Sie sie aus, zeigen Sie sie digital an oder integrieren Sie sie in Rechnungen.',
-            step3Title: 'Trinkgelder erhalten',
-            step3Text: 'Gäste scannen den Code mit jeder Smartphone-Kamera und geben Trinkgeld mit ihrer bevorzugten Zahlungsmethode.',
-            step4Title: 'Automatische Auszahlungen',
-            step4Text: 'Trinkgelder gehen direkt auf die Bankkonten der Mitarbeiter. Flexible Verteilungsregeln und Echtzeit-Verfolgung.',
-            industriesTitle: 'Perfekt für <span>Ihr Unternehmen</span>',
-            industry1Title: 'Restaurants & Cafés',
-            industry1Text: 'Servicekräfte, Barkeeper und Empfangsmitarbeiter erhalten Trinkgelder direkt.',
-            industry2Title: 'Friseure & Salons',
-            industry2Text: 'Friseure, Stylisten und Kosmetikerinnen erhalten digitale Trinkgelder.',
-            industry3Title: 'Autowaschanlagen',
-            industry3Text: 'Mitarbeiter erhalten Wertschätzung für hervorragenden Service.',
-            industry4Title: 'Hotels',
-            industry4Text: 'Porter, Hauspersonal und Concierge-Mitarbeiter profitieren.',
-            industry5Title: 'Lieferdienste',
-            industry5Text: 'Fahrer erhalten Trinkgelder direkt zu ihrem Verdienst hinzugefügt.',
-            industry6Title: 'Wellness & Fitness',
-            industry6Text: 'Trainer, Therapeuten und Instruktoren erhalten digitale Trinkgelder.',
-            industry7Title: 'Taxi-Dienste',
-            industry7Text: 'Taxifahrer erhalten Trinkgelder bequem per digitaler Zahlung.',
-            industry8Title: 'Event-Services',
-            industry8Text: 'Catering- und Event-Mitarbeiter sammeln Trinkgelder einfach ein.',
-            testimonialsTitle: 'Was unsere <span>Kunden sagen</span>',
-            testimonial1Text: 'Seit der Einführung von Stimmtso haben sich die Trinkgelder unseres Personals um 22 % erhöht. Das System ist für unser Team und die Gäste unglaublich einfach.',
-            testimonial1Name: 'Maria Schmidt',
-            testimonial1Role: 'Restaurantbesitzerin, Berlin',
-            testimonial2Text: 'Als Friseur habe ich früher Trinkgelder verpasst, wenn Kunden nur Karten dabeihatten. Jetzt erhalte ich täglich Trinkgelder über Stimmtso – das hat mein Einkommen erheblich verändert.',
-            testimonial2Name: 'Thomas Jäger',
-            testimonial2Role: 'Friseursalon, Hamburg',
-            testimonial3Text: 'Die Team-Verteilungsfunktion hat alle Streitigkeiten über die Trinkgeldaufteilung beseitigt. Unsere Mitarbeiter lieben die Transparenz und sofortigen Auszahlungen.',
-            testimonial3Name: 'Anna Keller',
-            testimonial3Role: 'Café-Managerin, München',
-            ctaTitle: 'Bereit, Ihre Trinkgelder zu erhöhen?',
-            ctaText: 'Schließen Sie sich Hunderten von Dienstleistungsunternehmen in Deutschland an, die bereits Stimmtso nutzen, um digitale Trinkgelder zu vereinfachen und das Einkommen der Mitarbeiter zu steigern.',
-            ctaButton: 'Jetzt kostenlos testen',
-            ctaSubtext: 'Keine Kreditkarte erforderlich • Kostenlose Einrichtungsunterstützung • Jederzeit kündbar',
-            footerAbout: 'Digitale Trinkgeldlösungen für Deutschlands Dienstleistungsbranche. Machen Sie das Trinkgeldgeben einfach, transparent und profitabel für alle.',
-            footerProduct: 'Produkt',
-            footerLegal: 'Rechtliches',
-            footerContact: 'Kontakt',
-            formTitle: 'Kostenlose Testversion starten',
-            formDescription: 'Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen, um Ihre kostenlose Testversion einzurichten.',
-            nameLabel: 'Name *',
-            namePlaceholder: 'Ihr Vor- und Nachname',
-            phoneLabel: 'Telefonnummer *',
-            phonePlaceholder: '+49 123 456789',
-            companyLabel: 'Unternehmen *',
-            companyPlaceholder: 'Name Ihres Unternehmens',
-            emailLabel: 'E-Mail (optional)',
-            emailPlaceholder: 'ihre.email@beispiel.de',
-            submitButton: 'Jetzt kostenlos testen',
-            thankYouTitle: 'Vielen Dank!',
-            thankYouText: 'Ihre Anfrage wurde erfolgreich übermittelt. Wir werden uns innerhalb von 24 Stunden bei Ihnen melden, um Ihre kostenlose Testversion von Stimmtso einzurichten.',
-            closeButton: 'Schließen'
-        },
-        en: {
-            navFeatures: 'Features',
-            navHowItWorks: 'How it works',
-            navIndustries: 'Industries',
-            navTestimonials: 'Testimonials',
-            navCTA: 'Get Started',
-            heroTitle: 'Cashless Tips <span>Directly to Your Employees</span>',
-            heroText: 'We are a digital service in Germany that allows guests of restaurants, bars, and hotels to leave tips with a card or phone. Our system is set up so that this money bypasses the establishment\'s account and goes immediately, in full, to the staff (waiters, bartenders) and not to the owners.',
-            heroCTA: 'Start Free Trial',
-            heroSecondary: 'See How It Works',
-            qrHint: 'Scan with your smartphone',
-            featuresTitle: 'Why Choose <span>Stimmtso</span>',
-            feature1Title: 'Simple QR Codes',
-            feature1Text: 'Generate unique QR codes for each employee or team. Guests simply scan to tip – no app download required.',
-            feature2Title: 'Higher Tips',
-            feature2Text: 'Increase tip amounts by 15–30% by making tipping convenient and accessible for card-only customers.',
-            feature3Title: 'Real-time Analytics',
-            feature3Text: 'Track tips, performance, and guest satisfaction through our comprehensive dashboard with export capabilities.',
-            feature4Title: 'Team Management',
-            feature4Text: 'Easily distribute tips among teams with customizable allocation rules. Strengthen team spirit with transparency.',
-            feature5Title: '100% Compliant',
-            feature5Text: 'Fully compliant with German tax regulations and tipping laws. Automated reporting simplifies accounting.',
-            feature6Title: 'Fast Integration',
-            feature6Text: 'Connect with your existing POS systems or use standalone. Get started in less than 10 minutes.',
-            feature7Title: 'Security',
-            feature7Text: 'Guest payments go directly to the business or employee. Our platform does not store or route any funds.',
-            feature8Title: 'Transparent Pricing',
-            feature8Text: 'The platform receives a fixed usage fee with no hidden costs. No additional fees for you or your employees.',
-            feature9Title: 'No Pressure for Guests',
-            feature9Text: 'We don\'t dictate tip amounts to guests. Full freedom of choice for every guest – we only provide the possibility.',
-            howItWorksTitle: 'How It <span>Works</span>',
-            step1Title: 'Sign Up Free',
-            step1Text: 'Create your business account in minutes. No setup fees or monthly charges. Only pay per transaction.',
-            step2Title: 'Get Your QR Codes',
-            step2Text: 'Generate personalized QR codes for your staff or teams. Print them, display digitally, or embed in receipts.',
-            step3Title: 'Start Receiving Tips',
-            step3Text: 'Guests scan the code with any smartphone camera and tip using their preferred payment method.',
-            step4Title: 'Automatic Payouts',
-            step4Text: 'Tips go directly to employees\' bank accounts. Flexible distribution rules and real-time tracking.',
-            industriesTitle: 'Perfect For <span>Your Business</span>',
-            industry1Title: 'Restaurants & Cafés',
-            industry1Text: 'Waitstaff, bartenders, and hosts receive tips directly.',
-            industry2Title: 'Barbers & Salons',
-            industry2Text: 'Hairdressers, stylists, and beauticians get digital tips.',
-            industry3Title: 'Car Washes',
-            industry3Text: 'Attendants receive appreciation for great service.',
-            industry4Title: 'Hotels',
-            industry4Text: 'Porters, housekeeping, and concierge staff benefit.',
-            industry5Title: 'Delivery Services',
-            industry5Text: 'Drivers get tips added directly to their earnings.',
-            industry6Title: 'Wellness & Fitness',
-            industry6Text: 'Trainers, therapists, and instructors receive digital tips.',
-            industry7Title: 'Taxi Services',
-            industry7Text: 'Taxi drivers receive tips conveniently via digital payment.',
-            industry8Title: 'Event Services',
-            industry8Text: 'Catering and event staff easily collect tips.',
-            testimonialsTitle: 'What Our <span>Clients Say</span>',
-            testimonial1Text: 'Since implementing Stimmtso, our staff tips have increased by 22%. The system is incredibly easy for both our team and guests.',
-            testimonial1Name: 'Maria Schmidt',
-            testimonial1Role: 'Restaurant Owner, Berlin',
-            testimonial2Text: 'As a barber, I used to miss out on tips when clients only had cards. Now I receive tips daily through Stimmtso – it\'s changed my earnings significantly.',
-            testimonial2Name: 'Thomas Jäger',
-            testimonial2Role: 'Barbershop, Hamburg',
-            testimonial3Text: 'The team distribution feature has eliminated all disputes about tip sharing. Our employees love the transparency and instant payouts.',
-            testimonial3Name: 'Anna Keller',
-            testimonial3Role: 'Café Manager, Munich',
-            ctaTitle: 'Ready to Increase Your Tips?',
-            ctaText: 'Join hundreds of service businesses across Germany already using Stimmtso to simplify digital tipping and boost employee earnings.',
-            ctaButton: 'Start Your Free Trial Now',
-            ctaSubtext: 'No credit card required • Free setup support • Cancel anytime',
-            footerAbout: 'Digital tipping solutions for Germany\'s service industry. Making tipping easy, transparent, and profitable for everyone.',
-            footerProduct: 'Product',
-            footerLegal: 'Legal',
-            footerContact: 'Contact',
-            formTitle: 'Start Free Trial',
-            formDescription: 'Fill out the form and we\'ll contact you within 24 hours to set up your free trial.',
-            nameLabel: 'Name *',
-            namePlaceholder: 'Your first and last name',
-            phoneLabel: 'Phone Number *',
-            phonePlaceholder: '+49 123 456789',
-            companyLabel: 'Company *',
-            companyPlaceholder: 'Your company name',
-            emailLabel: 'Email (optional)',
-            emailPlaceholder: 'your.email@example.com',
-            submitButton: 'Start Free Trial Now',
-            thankYouTitle: 'Thank You!',
-            thankYouText: 'Your request has been successfully submitted. We will contact you within 24 hours to set up your free trial of Stimmtso.',
-            closeButton: 'Close'
-        }
-    };
+    // Close mobile menu when clicking on nav items
+    navLinksItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (window.innerWidth <= 992) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
 
-    // 3. Apply translation function
-    function applyTranslation(lang) {
-        const t = translations[lang];
+    // 2. Language switching system
+    let currentLang = 'de';
 
-        // Navigation
-        document.querySelectorAll('.nav-links a')[0].textContent = t.navFeatures;
-        document.querySelectorAll('.nav-links a')[1].textContent = t.navHowItWorks;
-        document.querySelectorAll('.nav-links a')[2].textContent = t.navIndustries;
-        document.querySelectorAll('.nav-links a')[3].textContent = t.navTestimonials;
-        document.querySelector('.nav-links .cta-button').textContent = t.navCTA;
+    // Function to update all translatable elements
+    function updateLanguage(lang) {
+        currentLang = lang;
 
-        // Hero
-        document.querySelector('.hero h1').innerHTML = t.heroTitle;
-        document.querySelector('.hero p').textContent = t.heroText;
-        document.querySelector('.hero-buttons .cta-button').textContent = t.heroCTA;
-        document.querySelector('.hero-buttons .secondary-button').textContent = t.heroSecondary;
-        document.querySelector('.qr-hint').innerHTML = `<i class="fas fa-mobile-alt"></i>${t.qrHint}`;
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
 
-        // Features
-        document.querySelector('#features .section-title').innerHTML = t.featuresTitle;
-        const features = document.querySelectorAll('.feature-card');
-        features[0].querySelector('h3').textContent = t.feature1Title;
-        features[0].querySelector('p').textContent = t.feature1Text;
-        features[1].querySelector('h3').textContent = t.feature2Title;
-        features[1].querySelector('p').textContent = t.feature2Text;
-        features[2].querySelector('h3').textContent = t.feature3Title;
-        features[2].querySelector('p').textContent = t.feature3Text;
-        features[3].querySelector('h3').textContent = t.feature4Title;
-        features[3].querySelector('p').textContent = t.feature4Text;
-        features[4].querySelector('h3').textContent = t.feature5Title;
-        features[4].querySelector('p').textContent = t.feature5Text;
-        features[5].querySelector('h3').textContent = t.feature6Title;
-        features[5].querySelector('p').textContent = t.feature6Text;
-        features[6].querySelector('h3').textContent = t.feature7Title;
-        features[6].querySelector('p').textContent = t.feature7Text;
-        features[7].querySelector('h3').textContent = t.feature8Title;
-        features[7].querySelector('p').textContent = t.feature8Text;
-        features[8].querySelector('h3').textContent = t.feature9Title;
-        features[8].querySelector('p').textContent = t.feature9Text;
+        // Update all elements with data-de and data-en attributes
+        const translatableElements = document.querySelectorAll('[data-de], [data-en]');
 
-        // How It Works
-        document.querySelector('#how-it-works .section-title').innerHTML = t.howItWorksTitle;
-        const steps = document.querySelectorAll('.step');
-        steps[0].querySelector('h3').textContent = t.step1Title;
-        steps[0].querySelector('p').textContent = t.step1Text;
-        steps[1].querySelector('h3').textContent = t.step2Title;
-        steps[1].querySelector('p').textContent = t.step2Text;
-        steps[2].querySelector('h3').textContent = t.step3Title;
-        steps[2].querySelector('p').textContent = t.step3Text;
-        steps[3].querySelector('h3').textContent = t.step4Title;
-        steps[3].querySelector('p').textContent = t.step4Text;
+        translatableElements.forEach(element => {
+            // Skip language switcher buttons
+            if (element.classList.contains('lang-btn')) return;
 
-        // Industries
-        document.querySelector('#industries .section-title').innerHTML = t.industriesTitle;
-        const industries = document.querySelectorAll('.industry-card');
-        industries.forEach((card, i) => {
-            card.querySelector('h3').textContent = t[`industry${i+1}Title`];
-            card.querySelector('p').textContent = t[`industry${i+1}Text`];
+            // For elements with innerText
+            if (element.dataset[lang] !== undefined) {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    // Update placeholder for input elements
+                    const placeholderAttr = element.getAttribute(`data-${lang}-placeholder`);
+                    if (placeholderAttr) {
+                        element.placeholder = placeholderAttr;
+                    }
+                } else if (element.tagName === 'LABEL') {
+                    // Handle labels with required asterisk
+                    const text = element.dataset[lang];
+                    if (text.includes('*')) {
+                        const parts = text.split('*');
+                        element.innerHTML = `${parts[0]}<span class="required">*</span>${parts[1] || ''}`;
+                    } else {
+                        element.textContent = text;
+                    }
+                } else {
+                    element.textContent = element.dataset[lang];
+                }
+            }
         });
 
-        // Testimonials
-        document.querySelector('#testimonials .section-title').innerHTML = t.testimonialsTitle;
-        const testimonials = document.querySelectorAll('.testimonial-card');
-        testimonials[0].querySelector('.testimonial-text').textContent = t.testimonial1Text;
-        testimonials[0].querySelector('h4').textContent = t.testimonial1Name;
-        testimonials[0].querySelector('p').textContent = t.testimonial1Role;
-        testimonials[1].querySelector('.testimonial-text').textContent = t.testimonial2Text;
-        testimonials[1].querySelector('h4').textContent = t.testimonial2Name;
-        testimonials[1].querySelector('p').textContent = t.testimonial2Role;
-        testimonials[2].querySelector('.testimonial-text').textContent = t.testimonial3Text;
-        testimonials[2].querySelector('h4').textContent = t.testimonial3Name;
-        testimonials[2].querySelector('p').textContent = t.testimonial3Role;
+        // Special handling for complex elements
+        updateComplexElements(lang);
 
-        // CTA
-        document.querySelector('.cta-section h2').textContent = t.ctaTitle;
-        document.querySelector('.cta-section p').textContent = t.ctaText;
-        document.querySelector('.cta-section .cta-button').textContent = t.ctaButton;
-        document.querySelector('.cta-subtext').textContent = t.ctaSubtext;
-
-        // Footer
-        document.querySelectorAll('.footer-column')[0].querySelector('p').textContent = t.footerAbout;
-        document.querySelectorAll('.footer-column')[1].querySelector('h3').textContent = t.footerProduct;
-        document.querySelectorAll('.footer-column')[2].querySelector('h3').textContent = t.footerLegal;
-        document.querySelectorAll('.footer-column')[3].querySelector('h3').textContent = t.footerContact;
-
-        // Form
-        document.querySelector('#formContent h2').textContent = t.formTitle;
-        document.querySelector('#formContent p').textContent = t.formDescription;
-        document.querySelector('label[for="name"]').innerHTML = t.nameLabel.replace('*', '<span class="required">*</span>');
-        document.querySelector('#name').placeholder = t.namePlaceholder;
-        document.querySelector('label[for="phone"]').innerHTML = t.phoneLabel.replace('*', '<span class="required">*</span>');
-        document.querySelector('#phone').placeholder = t.phonePlaceholder;
-        document.querySelector('label[for="company"]').innerHTML = t.companyLabel.replace('*', '<span class="required">*</span>');
-        document.querySelector('#company').placeholder = t.companyPlaceholder;
-        document.querySelector('label[for="email"]').textContent = t.emailLabel;
-        document.querySelector('#email').placeholder = t.emailPlaceholder;
-        document.querySelector('.submit-btn').textContent = t.submitButton;
-
-        // Thank You
-        document.querySelector('#thankYouMessage h2').textContent = t.thankYouTitle;
-        document.querySelector('#thankYouMessage p').textContent = t.thankYouText;
-        document.querySelector('#thankYouMessage .cta-button').textContent = t.closeButton;
-
-        // Update document language
-        document.documentElement.lang = lang;
+        // Save language preference
+        localStorage.setItem('stimmtso-lang', lang);
     }
 
-    // Apply German by default
-    applyTranslation('de');
+    // Function for complex elements that need special handling
+    function updateComplexElements(lang) {
+        // Update hero title (two lines)
+        const heroTitle = document.querySelector('.hero-title');
+        if (heroTitle) {
+            const lines = heroTitle.querySelectorAll('.title-line');
+            if (lines.length === 2) {
+                lines[0].textContent = lang === 'de' ? 'Bargeldlose Trinkgelder' : 'Cashless Tips';
+                lines[1].textContent = lang === 'de' ? 'für die deutsche Gastronomie' : 'for the German Hospitality Industry';
+            }
+        }
 
-    // 4. Language switcher
+        // Update section titles
+        document.querySelectorAll('.section-title').forEach(title => {
+            const textSpan = title.querySelector('.section-title-text');
+            const highlightSpan = title.querySelector('.section-title-highlight');
+            const restSpan = title.querySelector('.section-title-rest');
+
+            if (textSpan) {
+                textSpan.textContent = textSpan.dataset[lang];
+            }
+            if (highlightSpan) {
+                highlightSpan.textContent = highlightSpan.dataset[lang];
+            }
+            if (restSpan) {
+                restSpan.textContent = restSpan.dataset[lang];
+            }
+        });
+
+        // Update active language button
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+    }
+
+    // 3. Language switcher buttons
     const langButtons = document.querySelectorAll('.lang-btn');
     langButtons.forEach(button => {
         button.addEventListener('click', function() {
             const lang = this.getAttribute('data-lang');
-
-            // Update active button
-            langButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-
-            // Apply translations
-            applyTranslation(lang);
+            updateLanguage(lang);
         });
     });
+
+    // 4. Load saved language preference
+    const savedLang = localStorage.getItem('stimmtso-lang');
+    if (savedLang && (savedLang === 'de' || savedLang === 'en')) {
+        updateLanguage(savedLang);
+    }
 
     // 5. Contact form modal
     const modal = document.getElementById('contactFormModal');
@@ -337,30 +135,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // Open form when QR code is clicked
     document.querySelector('.qr-visual').addEventListener('click', function(e) {
         e.preventDefault();
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        openModal();
     });
 
     // Open form from buttons
     openFormButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            openModal();
         });
     });
 
-    // Close form
-    closeModalButton.addEventListener('click', function() {
+    // Open modal function
+    function openModal() {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.body.style.paddingRight = window.innerWidth - document.documentElement.clientWidth + 'px';
+    }
+
+    // Close modal function
+    function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = 'auto';
+        document.body.style.paddingRight = '';
+    }
+
+    // Close form
+    closeModalButton.addEventListener('click', closeModal);
+
+    // Close form on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
     });
 
     // Close form on outside click
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            closeModal();
         }
     });
 
@@ -368,8 +181,20 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Here would be server submission
-        // For demo, just show message
+        // Basic validation
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const company = document.getElementById('company').value.trim();
+
+        if (!name || !phone || !company) {
+            const errorMessage = currentLang === 'de'
+                ? 'Bitte füllen Sie alle Pflichtfelder aus.'
+                : 'Please fill in all required fields.';
+            alert(errorMessage);
+            return;
+        }
+
+        // Show success message
         formContent.style.display = 'none';
         thankYouMessage.style.display = 'block';
 
@@ -378,26 +203,37 @@ document.addEventListener('DOMContentLoaded', function() {
             contactForm.reset();
             formContent.style.display = 'block';
             thankYouMessage.style.display = 'none';
+            closeModal();
         }, 5000);
     });
 
     // 6. Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            const href = this.getAttribute('href');
 
+            if (href === '#' || href.startsWith('mailto:') || href.startsWith('tel:')) {
+                return;
+            }
+
+            e.preventDefault();
+
+            const targetId = href;
             const targetElement = document.querySelector(targetId);
+
             if (targetElement) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
 
-                // Close mobile menu
-                if (window.innerWidth <= 992) {
-                    navLinks.style.display = 'none';
+                // Close mobile menu if open
+                if (window.innerWidth <= 992 && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 }
             }
         });
@@ -405,4 +241,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 7. Update current year in footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // 8. Add scroll effect to header
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+        }
+
+        if (scrollTop > 50) {
+            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+        } else {
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+        }
+
+        lastScrollTop = scrollTop;
+    });
+
+    // 9. Add loading animation for cards
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe feature cards, steps, and industry cards
+    document.querySelectorAll('.feature-card, .step, .industry-card, .testimonial-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+
+    // 10. Initialize tooltips for accessibility
+    document.querySelectorAll('[data-tooltip]').forEach(element => {
+        element.setAttribute('title', element.getAttribute('data-tooltip'));
+    });
 });
